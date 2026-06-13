@@ -1,0 +1,50 @@
+{
+  "exact_commands": {
+    "stop_alarm": ["stop alarm", "stop timer", "stop ringing", "dismiss alarm"],
+    "greeting": ["", "hello", "hi", "hey"],
+    "voice_test": ["voice test", "test voice", "speak test", "test speech"],
+    "voice_status": ["voice status", "speech status", "why no voice"],
+    "list_cached_apps": [
+      "list cached apps",
+      "cached apps",
+      "list recent apps",
+      "recent apps",
+      "what apps do you know",
+      "show recent apps"
+    ],
+    "list_whatsapp_contacts": [
+      "list whatsapp contacts",
+      "whatsapp contacts",
+      "show whatsapp contacts"
+    ],
+    "list_open_apps": ["list open apps", "open apps", "what apps are open", "show open apps"],
+    "exit": ["stop listening", "go offline", "shutdown", "shut down", "exit", "quit"],
+    "start_next_task": ["start next task", "do next task", "run next task"],
+    "time": ["what time is it", "what's the time", "whats the time", "time", "tell me the time"],
+    "date": ["what day is it", "date", "today's date", "what is the date"],
+    "list_tasks": ["list tasks", "task list", "what are my tasks", "show tasks", "what do i have to do"],
+    "clear_tasks": ["clear tasks", "clear all tasks", "forget everything"]
+    ,
+    "run_diagnostics": ["jarvis run diagnostics", "run diagnostics", "jarvis diagnostics"],
+    "check_ai_health": ["jarvis check ai health", "check ai health", "ai health check"],
+    "why_slow": ["jarvis why are you slow", "why are you slow", "why is jarvis slow"],
+    "recover_ai": ["jarvis recover ai", "recover ai"],
+    "safe_mode": ["jarvis enter safe mode", "enter safe mode", "emergency safe mode"],
+    "check_memory": ["jarvis check memory", "check memory"]
+  },
+
+  "keyword_commands": [
+    {
+      "handler": "alarm",
+      "keywords": ["\\b(alarms?|timers?)\\b"]
+    },
+    {
+      "handler": "stopwatch",
+      "keywords": ["\\bstopwatch\\b"]
+    },
+    {
+      "handler": "question",
+      "keywords": ["^(what|who|when|where|why|how|define|calculate|tell me)"]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "action_starters": [
+    "search",
+    "google",
+    "open",
+    "launch",
+    "start",
+    "run",
+    "look",
+    "lookup",
+    "find",
+    "visit",
+    "go",
+    "type",
+    "write",
+    "press",
+    "close",
+    "switch",
+    "message",
+    "call",
+    "video",
+    "audio",
+    "send"
+  ],
+
+  "intent_patterns": [
+    "\\bi should\\s+(.+)",
+    "\\bi need to\\s+(.+)",
+    "\\bi have to\\s+(.+)",
+    "\\bi will\\s+(.+)"
+  ],
+
+  "remember_patterns": [
+    "\\bremember(?: that)?\\s+(.+)",
+    "\\bremind me(?: to)?\\s+(.+)"
+  ],
+
+  "direct_action_patterns": [
+    "^(?:please\\s+)?(?:send\\s+)?(?:a\\s+)?(?:whatsapp\\s+)?message\\s+(?:to\\s+)?(.+?)\\s+(?:on\\s+whatsapp\\s+)?(?:saying|say|that says|message)\\s+(.+)",
+    "^(?:please\\s+)?(?:whatsapp\\s+)?(?:audio\\s+)?call\\s+(.+?)(?:\\s+on\\s+whatsapp)?$",
+    "^(?:please\\s+)?(?:whatsapp\\s+)?(?:video\\s+call)\\s+(.+?)(?:\\s+on\\s+whatsapp)?$",
+    "^(?:please\\s+)?(?:whatsapp message|message)\\s+(.+?)\\s+(?:on\\s+whatsapp\\s+)?(?:saying|say|message)\\s+(.+)",
+    "^(?:please\\s+)?(?:whatsapp video call|video call)\\s+(.+?)(?:\\s+on\\s+whatsapp)?$",
+    "^(?:please\\s+)?(?:whatsapp call|call)\\s+(.+?)(?:\\s+on\\s+whatsapp)?$",
+    "^(?:please\\s+)?(?:search youtube|youtube search)\\s+(.+)",
+    "^(?:please\\s+)?(?:do\\s+)?(?:open|launch|start)\\s+(.+)",
+    "^(?:please\\s+)?(?:go to|visit|open website|open site)\\s+(.+)",
+    "^(?:please\\s+)?(?:look up|lookup|find)\\s+(.+)",
+    "^(?:please\\s+)?(?:type|write)\\s+(.+)",
+    "^(?:please\\s+)?press\\s+(.+)",
+    "^(?:please\\s+)?(?:close window|close app|close current window|close this app)$",
+    "^(?:please\\s+)?(?:switch window|switch app|switch apps|next window)$",
+    "^(?:please\\s+)?(?:search|google)\\s+(.+)"
+  ],
+
+  "yes_words": ["ok", "okay", "yes", "yep", "sure", "alright", "do it", "go ahead"],
+  "no_words": ["no", "nope", "nah", "cancel", "stop", "not now"]
+}

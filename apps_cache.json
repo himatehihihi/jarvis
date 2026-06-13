@@ -1,0 +1,3467 @@
+{
+  "apps": {
+    "ai expertmeet": {
+      "name": "AI ExpertMeet",
+      "aliases": [
+        "ai expertmeet"
+      ],
+      "target": "shell:AppsFolder\\AI ExpertMeet",
+      "source": "start_apps"
+    },
+    "cake wallet": {
+      "name": "Cake Wallet",
+      "aliases": [
+        "cake wallet"
+      ],
+      "target": "shell:AppsFolder\\{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\\CakeWallet\\CakeWallet.exe",
+      "source": "start_apps"
+    },
+    "excel": {
+      "name": "Excel",
+      "aliases": [
+        "excel"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.EXCEL.EXE.15",
+      "source": "start_apps"
+    },
+    "google chrome": {
+      "name": "Google Chrome",
+      "aliases": [
+        "google chrome"
+      ],
+      "target": "shell:AppsFolder\\Chrome",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "microsoft edge": {
+      "name": "Microsoft Edge",
+      "aliases": [
+        "microsoft edge"
+      ],
+      "target": "shell:AppsFolder\\MSEdge",
+      "source": "start_apps",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "nomachine": {
+      "name": "NoMachine",
+      "aliases": [
+        "nomachine"
+      ],
+      "target": "shell:AppsFolder\\nomachine.nxplayer",
+      "source": "start_apps"
+    },
+    "onedrive": {
+      "name": "OneDrive",
+      "aliases": [
+        "onedrive"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.SkyDrive.Desktop",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "onenote": {
+      "name": "OneNote",
+      "aliases": [
+        "onenote"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.ONENOTE.EXE.15",
+      "source": "start_apps",
+      "last_seen": "2026-06-08T21:16:40"
+    },
+    "powerpoint": {
+      "name": "PowerPoint",
+      "aliases": [
+        "powerpoint"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.POWERPNT.EXE.15",
+      "source": "start_apps"
+    },
+    "sticky notes new": {
+      "name": "Sticky Notes (new)",
+      "aliases": [
+        "sticky notes new"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.OneNote.MemoryPreview",
+      "source": "start_apps"
+    },
+    "tailscale": {
+      "name": "Tailscale",
+      "aliases": [
+        "tailscale"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\Tailscale\\tailscale-ipn.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "visual studio 2022": {
+      "name": "Visual Studio 2022",
+      "aliases": [
+        "visual studio 2022"
+      ],
+      "target": "shell:AppsFolder\\VisualStudio.aeb490bf",
+      "source": "start_apps"
+    },
+    "visual studio installer": {
+      "name": "Visual Studio Installer",
+      "aliases": [
+        "visual studio installer"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.VisualStudio.Installer",
+      "source": "start_apps"
+    },
+    "word": {
+      "name": "Word",
+      "aliases": [
+        "word"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.WINWORD.EXE.15",
+      "source": "start_apps"
+    },
+    "wsl settings": {
+      "name": "WSL Settings",
+      "aliases": [
+        "wsl settings"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\WSL\\wslsettings\\wslsettings.exe",
+      "source": "start_apps"
+    },
+    "wsl": {
+      "name": "WSL",
+      "aliases": [
+        "wsl"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WSL",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "remote desktop connection": {
+      "name": "Remote Desktop Connection",
+      "aliases": [
+        "remote connection",
+        "remote desktop connection"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.RemoteDesktop",
+      "source": "start_apps"
+    },
+    "steps recorder": {
+      "name": "Steps Recorder",
+      "aliases": [
+        "steps recorder"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\psr.exe",
+      "source": "start_apps"
+    },
+    "windows media player legacy": {
+      "name": "Windows Media Player Legacy",
+      "aliases": [
+        "windows media player legacy"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.MediaPlayer32",
+      "source": "start_apps"
+    },
+    "character map": {
+      "name": "Character Map",
+      "aliases": [
+        "character map"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\charmap.exe",
+      "source": "start_apps"
+    },
+    "component services": {
+      "name": "Component Services",
+      "aliases": [
+        "component services"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\comexp.msc",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "computer management": {
+      "name": "Computer Management",
+      "aliases": [
+        "computer management"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{8ABD94FB-E7D6-84A6-A997-C918EDDE0AE5}",
+      "source": "start_apps"
+    },
+    "dfrgui": {
+      "name": "dfrgui",
+      "aliases": [
+        "dfrgui"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\dfrgui.lnk",
+      "source": "shortcut"
+    },
+    "disk cleanup": {
+      "name": "Disk Cleanup",
+      "aliases": [
+        "disk cleanup"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\cleanmgr.exe",
+      "source": "start_apps"
+    },
+    "event viewer": {
+      "name": "Event Viewer",
+      "aliases": [
+        "event viewer"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{BB044BFD-25B7-2FAA-22A8-6371A93E0456}",
+      "source": "start_apps"
+    },
+    "iscsi initiator": {
+      "name": "iSCSI Initiator",
+      "aliases": [
+        "iscsi initiator"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\iscsicpl.exe",
+      "source": "start_apps"
+    },
+    "memory diagnostics tool": {
+      "name": "Memory Diagnostics Tool",
+      "aliases": [
+        "memory diagnostics tool"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\Memory Diagnostics Tool.lnk",
+      "source": "shortcut"
+    },
+    "odbc data sources 32 bit": {
+      "name": "ODBC Data Sources (32-bit)",
+      "aliases": [
+        "odbc data sources 32 bit"
+      ],
+      "target": "shell:AppsFolder\\{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\\odbcad32.exe",
+      "source": "start_apps"
+    },
+    "odbc data sources 64 bit": {
+      "name": "ODBC Data Sources (64-bit)",
+      "aliases": [
+        "odbc data sources 64 bit"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\odbcad32.exe",
+      "source": "start_apps"
+    },
+    "performance monitor": {
+      "name": "Performance Monitor",
+      "aliases": [
+        "performance monitor"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{8AA47365-B2B3-1961-69EB-F866E376B12F}",
+      "source": "start_apps"
+    },
+    "recoverydrive": {
+      "name": "RecoveryDrive",
+      "aliases": [
+        "recoverydrive"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\RecoveryDrive.lnk",
+      "source": "shortcut"
+    },
+    "registry editor": {
+      "name": "Registry Editor",
+      "aliases": [
+        "registry editor"
+      ],
+      "target": "shell:AppsFolder\\{F38BF404-1D43-42F2-9305-67DE0B28FC23}\\regedit.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "resource monitor": {
+      "name": "Resource Monitor",
+      "aliases": [
+        "resource monitor"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{C804BBA7-FA5F-CBF7-8B55-2096E5F972CB}",
+      "source": "start_apps"
+    },
+    "services": {
+      "name": "services",
+      "aliases": [
+        "services"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\services.msc",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "system configuration": {
+      "name": "System Configuration",
+      "aliases": [
+        "system configuration"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\msconfig.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "system information": {
+      "name": "System Information",
+      "aliases": [
+        "system information"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\msinfo32.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "task scheduler": {
+      "name": "Task Scheduler",
+      "aliases": [
+        "task scheduler"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{C1C6F8AC-40A3-0F5C-146F-65A9DC70BBB4}",
+      "source": "start_apps"
+    },
+    "windows defender firewall with advanced security": {
+      "name": "Windows Defender Firewall with Advanced Security",
+      "aliases": [
+        "windows defender firewall with advanced security"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WF.msc",
+      "source": "start_apps"
+    },
+    "asus expertpanel": {
+      "name": "ASUS ExpertPanel",
+      "aliases": [
+        "asus expertpanel"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{74DBBFF6-F825-DCDE-DB9F-FCDD1415BF17}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "crystaldiskinfo": {
+      "name": "CrystalDiskInfo",
+      "aliases": [
+        "crystaldiskinfo"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\CrystalDiskInfo\\DiskInfo64.exe",
+      "source": "start_apps"
+    },
+    "check for fxsound updates": {
+      "name": "Check for FxSound updates",
+      "aliases": [
+        "check for fxsound updates"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6F12E9ED-04D3-873E-8BD0-C3274E04DA5E}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "fxsound": {
+      "name": "FxSound",
+      "aliases": [
+        "fxsound"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\FxSound LLC\\FxSound\\FxSound.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "garena": {
+      "name": "Garena",
+      "aliases": [
+        "garena"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\Documents\\mayur\\free fire\\Garena\\Garena\\Garena.exe",
+      "source": "start_apps"
+    },
+    "uninstall": {
+      "name": "Uninstall",
+      "aliases": [
+        "uninstall"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\HandBrake\\Uninstall.lnk",
+      "source": "shortcut"
+    },
+    "git bash": {
+      "name": "Git Bash",
+      "aliases": [
+        "git bash"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{0FDD9C6B-656B-0F1F-AB08-B1CDBB7067B3}",
+      "source": "start_apps"
+    },
+    "git cmd": {
+      "name": "Git CMD",
+      "aliases": [
+        "git cmd"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{29591C0F-7C09-B655-C0EB-8544FCA7D1DE}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "git faqs frequently asked questions": {
+      "name": "Git FAQs (Frequently Asked Questions)",
+      "aliases": [
+        "git faqs frequently asked questions"
+      ],
+      "target": "shell:AppsFolder\\https://gitforwindows.org/faq",
+      "source": "start_apps"
+    },
+    "git gui": {
+      "name": "Git GUI",
+      "aliases": [
+        "git gui"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\Git\\cmd\\git-gui.exe",
+      "source": "start_apps"
+    },
+    "git release notes": {
+      "name": "Git Release Notes",
+      "aliases": [
+        "git release notes"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\Git\\ReleaseNotes.html",
+      "source": "start_apps"
+    },
+    "about java": {
+      "name": "About Java",
+      "aliases": [
+        "about java"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{DC8702AF-FFF2-F9C7-695F-49CA909F108C}",
+      "source": "start_apps",
+      "last_opened": "2026-06-13T14:09:59",
+      "last_seen": "2026-06-13T14:09:59"
+    },
+    "check for updates": {
+      "name": "Check For Updates",
+      "aliases": [
+        "check for updates"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6D1549CC-DE2D-7D91-8BF2-074E110708DD}",
+      "source": "start_apps"
+    },
+    "configure java": {
+      "name": "Configure Java",
+      "aliases": [
+        "configure java"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\Java\\jre1.8.0_51\\bin\\javacpl.exe",
+      "source": "start_apps"
+    },
+    "get help": {
+      "name": "Get Help",
+      "aliases": [
+        "get help"
+      ],
+      "target": "shell:AppsFolder\\http://java.com/help",
+      "source": "start_apps"
+    },
+    "visit java": {
+      "name": "Visit Java.com",
+      "aliases": [
+        "visit java"
+      ],
+      "target": "shell:AppsFolder\\http://java.com/",
+      "source": "start_apps"
+    },
+    "office language preferences": {
+      "name": "Office Language Preferences",
+      "aliases": [
+        "office language preferences"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Office.SETLANG.EXE.15",
+      "source": "start_apps"
+    },
+    "install additional tools for node": {
+      "name": "Install Additional Tools for Node.js",
+      "aliases": [
+        "install additional tools for node"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{04770C2D-34E6-BE94-EFAD-FA817237D6E9}",
+      "source": "start_apps"
+    },
+    "node": {
+      "name": "Node.js command prompt",
+      "aliases": [
+        "node"
+      ],
+      "target": "shell:AppsFolder\\https://nodejs.org/",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "uninstall node": {
+      "name": "Uninstall Node.js",
+      "aliases": [
+        "uninstall node"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{66BBC888-2812-4F2E-217B-5F51E13821F0}",
+      "source": "start_apps"
+    },
+    "riot client": {
+      "name": "Riot Client",
+      "aliases": [
+        "riot client"
+      ],
+      "target": "shell:AppsFolder\\C:\\Riot Games\\Riot Client\\RiotClientServices.exe",
+      "source": "start_apps"
+    },
+    "valorant": {
+      "name": "VALORANT",
+      "aliases": [
+        "valorant"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{B90C4CF3-5116-AEB7-2542-2440C94B666D}",
+      "source": "start_apps"
+    },
+    "task manager": {
+      "name": "Task Manager",
+      "aliases": [
+        "task manager"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{923DD477-5846-686B-A659-0FCCD73851A8}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "tlauncher": {
+      "name": "TLauncher",
+      "aliases": [
+        "tlauncher"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Roaming\\.minecraft\\TLauncher.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "last_opened": "2026-05-31T15:34:53"
+    },
+    "developer command prompt for vs 2022": {
+      "name": "Developer Command Prompt for VS 2022",
+      "aliases": [
+        "developer command prompt for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{AF786F56-C95A-2910-4FF9-116D53266237}",
+      "source": "start_apps"
+    },
+    "developer powershell for vs 2022": {
+      "name": "Developer PowerShell for VS 2022",
+      "aliases": [
+        "developer powershell for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{693FF08B-4B37-6825-4BF6-BE46DC8D7DD3}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "x64 native tools command prompt for vs 2022": {
+      "name": "x64 Native Tools Command Prompt for VS 2022",
+      "aliases": [
+        "x64 native tools command prompt for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{86997D92-2F6B-FCAF-C97C-27F79546CA7C}",
+      "source": "start_apps"
+    },
+    "x64 x86 cross tools command prompt for vs 2022": {
+      "name": "x64_x86 Cross Tools Command Prompt for VS 2022",
+      "aliases": [
+        "x64 x86 cross tools command prompt for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{B1331350-92CB-D6D9-9045-4BA3E2200EEE}",
+      "source": "start_apps"
+    },
+    "x86 native tools command prompt for vs 2022": {
+      "name": "x86 Native Tools Command Prompt for VS 2022",
+      "aliases": [
+        "x86 native tools command prompt for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{D6D9FF0A-6368-3A66-8FA9-231D085436D4}",
+      "source": "start_apps"
+    },
+    "x86 x64 cross tools command prompt for vs 2022": {
+      "name": "x86_x64 Cross Tools Command Prompt for VS 2022",
+      "aliases": [
+        "x86 x64 cross tools command prompt for vs 2022"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{F7F1CEA8-372E-3932-F0A7-1BF7F475590A}",
+      "source": "start_apps"
+    },
+    "windows powershell ise x86": {
+      "name": "Windows PowerShell ISE (x86)",
+      "aliases": [
+        "windows powershell ise x86"
+      ],
+      "target": "shell:AppsFolder\\{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\\WindowsPowerShell\\v1.0\\PowerShell_ISE.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "windows powershell ise": {
+      "name": "Windows PowerShell ISE",
+      "aliases": [
+        "windows powershell ise"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\PowerShell_ISE.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "wondershare dr": {
+      "name": "Wondershare Dr.Fone",
+      "aliases": [
+        "wondershare dr"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\Wondershare\\Wondershare Dr.Fone Basic\\DrFoneToolKit.exe",
+      "source": "start_apps"
+    },
+    "youtube playlist downloader": {
+      "name": "YouTube Playlist Downloader",
+      "aliases": [
+        "youtube playlist downloader"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\Documents\\mayur\\yt downlader\\YouTube Playlist Downloader\\YoutubePlaylistDownloader.exe",
+      "source": "start_apps"
+    },
+    "administrative tools": {
+      "name": "Administrative Tools",
+      "aliases": [
+        "administrative tools"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools.lnk",
+      "source": "shortcut"
+    },
+    "ai clearvoice speaker": {
+      "name": "AI ClearVoice Speaker",
+      "aliases": [
+        "ai clearvoice speaker"
+      ],
+      "target": "shell:AppsFolder\\intelliGo.iGoSwServer.ToastNotifier.v1",
+      "source": "start_apps"
+    },
+    "amazon photos": {
+      "name": "Amazon Photos",
+      "aliases": [
+        "amazon photos"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{D64AB56F-8E1A-2516-9B8E-74B3190E90E6}",
+      "source": "start_apps",
+      "last_opened": "2026-05-29T02:59:19",
+      "last_seen": "2026-05-29T02:59:19"
+    },
+    "file explorer": {
+      "name": "File Explorer",
+      "aliases": [
+        "file explorer"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.Explorer",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "aliases": [
+        "ollama"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Local\\Programs\\Ollama\\ollama app.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "roblox": {
+      "name": "Roblox",
+      "aliases": [
+        "roblox"
+      ],
+      "target": "shell:AppsFolder\\com.Roblox.Player",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "livecaptions": {
+      "name": "LiveCaptions",
+      "aliases": [
+        "livecaptions"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Accessibility\\LiveCaptions.lnk",
+      "source": "shortcut"
+    },
+    "magnify": {
+      "name": "Magnify",
+      "aliases": [
+        "magnify"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Accessibility\\Magnify.lnk",
+      "source": "shortcut"
+    },
+    "narrator": {
+      "name": "Narrator",
+      "aliases": [
+        "narrator"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\narrator.exe",
+      "source": "start_apps"
+    },
+    "on screen keyboard": {
+      "name": "On-Screen Keyboard",
+      "aliases": [
+        "on screen keyboard"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\osk.exe",
+      "source": "start_apps"
+    },
+    "voiceaccess": {
+      "name": "VoiceAccess",
+      "aliases": [
+        "voiceaccess"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Accessibility\\VoiceAccess.lnk",
+      "source": "shortcut"
+    },
+    "claude": {
+      "name": "Claude",
+      "aliases": [
+        "claude"
+      ],
+      "target": "shell:AppsFolder\\com.squirrel.AnthropicClaude.claude",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "last_opened": "2026-05-01T21:37:40"
+    },
+    "advanced network configuration kali linux": {
+      "name": "Advanced Network Configuration (kali-linux)",
+      "aliases": [
+        "advanced network configuration kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{CC55A57E-09E1-7113-036E-E5CFFE5661BF}",
+      "source": "start_apps"
+    },
+    "application finder kali linux": {
+      "name": "Application Finder (kali-linux)",
+      "aliases": [
+        "application finder kali linux",
+        "lication finder kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{210F7C77-295A-E195-1EE7-69E0BF1413BF}",
+      "source": "start_apps"
+    },
+    "atril document viewer kali linux": {
+      "name": "Atril Document Viewer (kali-linux)",
+      "aliases": [
+        "atril document viewer kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{7F916B21-28E5-7F7C-0E87-AB144BFFDA1D}",
+      "source": "start_apps"
+    },
+    "bluetooth manager kali linux": {
+      "name": "Bluetooth Manager (kali-linux)",
+      "aliases": [
+        "bluetooth manager kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{2EF64CA7-6E44-BC57-1BE4-508D55812391}",
+      "source": "start_apps"
+    },
+    "bulk rename kali linux": {
+      "name": "Bulk Rename (kali-linux)",
+      "aliases": [
+        "bulk rename kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{DB4AFF84-33ED-EA5D-3A7E-F731AE49B8F4}",
+      "source": "start_apps"
+    },
+    "catfish file search kali linux": {
+      "name": "Catfish File Search (kali-linux)",
+      "aliases": [
+        "catfish file search kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{E3C182DC-7002-544F-01B5-210C38CF4E03}",
+      "source": "start_apps"
+    },
+    "chromium web browser kali linux": {
+      "name": "Chromium Web Browser (kali-linux)",
+      "aliases": [
+        "chromium web browser kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{21B2F160-0C1B-2AAA-9C28-5292E71CB2B6}",
+      "source": "start_apps"
+    },
+    "disks kali linux": {
+      "name": "Disks (kali-linux)",
+      "aliases": [
+        "disks kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{E851679D-A3E5-87CF-BEAB-906D6249A57C}",
+      "source": "start_apps"
+    },
+    "engrampa archive manager kali linux": {
+      "name": "Engrampa Archive Manager (kali-linux)",
+      "aliases": [
+        "engrampa archive manager kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6AC53762-6104-9A4C-6960-CC65BD144DE4}",
+      "source": "start_apps"
+    },
+    "exploit database kali linux": {
+      "name": "Exploit Database (kali-linux)",
+      "aliases": [
+        "exploit database kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{090031A4-1CD7-1FB9-6BC2-D17379A3E536}",
+      "source": "start_apps"
+    },
+    "firefox esr kali linux": {
+      "name": "Firefox ESR (kali-linux)",
+      "aliases": [
+        "firefox esr kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6C6D0E9F-E9ED-9F5B-705F-13167CC91160}",
+      "source": "start_apps"
+    },
+    "google chrome kali linux": {
+      "name": "Google Chrome (kali-linux)",
+      "aliases": [
+        "google chrome kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{AC230D63-2593-5624-D2D5-FA329D72094A}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "gtkhash kali linux": {
+      "name": "GtkHash (kali-linux)",
+      "aliases": [
+        "gtkhash kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{67B6FCBB-C5DF-F019-49B5-F1C3BB8B9FBF}",
+      "source": "start_apps"
+    },
+    "kali bugs kali linux": {
+      "name": "Kali Bugs (kali-linux)",
+      "aliases": [
+        "kali bugs kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{3DF6494E-B880-0F4A-B30D-2CB1EB64B143}",
+      "source": "start_apps"
+    },
+    "kali docs kali linux": {
+      "name": "Kali Docs (kali-linux)",
+      "aliases": [
+        "kali docs kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{ED687AF2-CC41-3AA4-5272-C20592A08291}",
+      "source": "start_apps"
+    },
+    "kali forums kali linux": {
+      "name": "Kali Forums (kali-linux)",
+      "aliases": [
+        "kali forums kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{923CE561-510F-5AF7-03D5-A76FA7E62390}",
+      "source": "start_apps"
+    },
+    "kali linux kali linux": {
+      "name": "Kali Linux (kali-linux)",
+      "aliases": [
+        "kali linux kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{388F394C-A5DD-DC41-094C-E2A1B8505EF7}",
+      "source": "start_apps"
+    },
+    "kali tools kali linux": {
+      "name": "Kali Tools (kali-linux)",
+      "aliases": [
+        "kali tools kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{DA05DE6B-A6AE-4E80-A95F-9A69A2FC4B27}",
+      "source": "start_apps"
+    },
+    "kali tweaks kali linux": {
+      "name": "Kali Tweaks (kali-linux)",
+      "aliases": [
+        "kali tweaks kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{C2477BDC-BD8D-3D45-649C-385C31F4A9ED}",
+      "source": "start_apps"
+    },
+    "lightdm gtk greeter settings kali linux": {
+      "name": "LightDM GTK Greeter settings (kali-linux)",
+      "aliases": [
+        "lightdm gtk greeter settings kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{E37AE4D6-D17B-2AF5-2469-9244BB2DA72C}",
+      "source": "start_apps"
+    },
+    "mate calculator kali linux": {
+      "name": "MATE Calculator (kali-linux)",
+      "aliases": [
+        "mate calculator kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{E7772D79-3585-0B38-8820-0B4C789E7EA7}",
+      "source": "start_apps"
+    },
+    "mousepad kali linux": {
+      "name": "Mousepad (kali-linux)",
+      "aliases": [
+        "mousepad kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{8AFA58C6-5970-B3EF-4A76-452F5D4149F3}",
+      "source": "start_apps"
+    },
+    "nethunter kali linux": {
+      "name": "NetHunter (kali-linux)",
+      "aliases": [
+        "nethunter kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{4C0E37CC-5D9D-6989-9BD5-A9A09B1A199E}",
+      "source": "start_apps"
+    },
+    "offsec training kali linux": {
+      "name": "OffSec Training (kali-linux)",
+      "aliases": [
+        "offsec training kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{1D274F9B-B6B6-3331-2701-5915FFDA32CD}",
+      "source": "start_apps"
+    },
+    "onboard kali linux": {
+      "name": "Onboard (kali-linux)",
+      "aliases": [
+        "onboard kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{7F1BCA49-88FD-B211-DAF8-C2953067446C}",
+      "source": "start_apps"
+    },
+    "onboard settings kali linux": {
+      "name": "Onboard Settings (kali-linux)",
+      "aliases": [
+        "onboard settings kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{14313A87-4495-70E3-17AD-B0F66DFEAD9A}",
+      "source": "start_apps"
+    },
+    "parole media player kali linux": {
+      "name": "Parole Media Player (kali-linux)",
+      "aliases": [
+        "parole media player kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6D3A255D-B227-CCBB-7F16-4114ED95D2F1}",
+      "source": "start_apps"
+    },
+    "print settings kali linux": {
+      "name": "Print Settings (kali-linux)",
+      "aliases": [
+        "print settings kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{F2E94776-B6CF-7C19-BA4A-E91770833FC4}",
+      "source": "start_apps"
+    },
+    "qt5 settings kali linux": {
+      "name": "Qt5 Settings (kali-linux)",
+      "aliases": [
+        "qt5 settings kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{B98CA817-83AC-9A29-EF37-64096D20CC0A}",
+      "source": "start_apps"
+    },
+    "qt6 settings kali linux": {
+      "name": "Qt6 Settings (kali-linux)",
+      "aliases": [
+        "qt6 settings kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{D5909E70-336F-29EE-B479-BD990479760F}",
+      "source": "start_apps"
+    },
+    "qterminal kali linux": {
+      "name": "QTerminal (kali-linux)",
+      "aliases": [
+        "qterminal kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{20D00AED-1D4F-4F71-058E-214B83051A27}",
+      "source": "start_apps"
+    },
+    "qterminal drop down kali linux": {
+      "name": "QTerminal Drop-down (kali-linux)",
+      "aliases": [
+        "qterminal drop down kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{5DB08AF0-F0A7-E61F-F482-7DE91C6410DF}",
+      "source": "start_apps"
+    },
+    "removable drives and media kali linux": {
+      "name": "Removable Drives and Media (kali-linux)",
+      "aliases": [
+        "removable drives and media kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{87FD7BF0-84B0-1755-95F9-58EF2F045F57}",
+      "source": "start_apps"
+    },
+    "ristretto image viewer kali linux": {
+      "name": "Ristretto Image Viewer (kali-linux)",
+      "aliases": [
+        "ristretto image viewer kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{6955EDE9-5695-AB7D-56E0-C25F12EEE0D8}",
+      "source": "start_apps"
+    },
+    "root terminal emulator kali linux": {
+      "name": "Root Terminal Emulator (kali-linux)",
+      "aliases": [
+        "root terminal emulator kali linux",
+        "terminal emulator kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{B58DFF9F-9F20-F6A1-A56C-9BB76EAE3FC6}",
+      "source": "start_apps"
+    },
+    "screenshot kali linux": {
+      "name": "Screenshot (kali-linux)",
+      "aliases": [
+        "screenshot kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{EADE11F8-4B6A-FDCF-C412-D839D34543B7}",
+      "source": "start_apps"
+    },
+    "sensor viewer kali linux": {
+      "name": "Sensor Viewer (kali-linux)",
+      "aliases": [
+        "sensor viewer kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{8F4A442D-ECD0-19D6-47ED-DD43AAAF88F5}",
+      "source": "start_apps"
+    },
+    "task manager kali linux": {
+      "name": "Task Manager (kali-linux)",
+      "aliases": [
+        "task manager kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{4FF5C6D0-4106-EE85-5FA7-2D497886F11C}",
+      "source": "start_apps"
+    },
+    "thunar file manager kali linux": {
+      "name": "Thunar File Manager (kali-linux)",
+      "aliases": [
+        "thunar file manager kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{740678C1-247E-F1F3-3441-0507CA0ED5BC}",
+      "source": "start_apps"
+    },
+    "thunar preferences kali linux": {
+      "name": "Thunar Preferences (kali-linux)",
+      "aliases": [
+        "thunar preferences kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{AFFBC7D4-2743-F5CC-B435-60B9517B8818}",
+      "source": "start_apps"
+    },
+    "uxterm kali linux": {
+      "name": "UXTerm (kali-linux)",
+      "aliases": [
+        "uxterm kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{DF5C5DC3-3713-E2E4-1371-2DEA2F5724F0}",
+      "source": "start_apps"
+    },
+    "volume control kali linux": {
+      "name": "Volume Control (kali-linux)",
+      "aliases": [
+        "volume control kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{54725F31-0A1B-F1BE-021E-1972EAAC7778}",
+      "source": "start_apps"
+    },
+    "vulnhub kali linux": {
+      "name": "VulnHub (kali-linux)",
+      "aliases": [
+        "vulnhub kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{74506BCD-2B75-789B-BD3B-5EEA29C549B9}",
+      "source": "start_apps"
+    },
+    "xterm kali linux": {
+      "name": "XTerm (kali-linux)",
+      "aliases": [
+        "xterm kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{FEEEC79E-0188-DFC3-EA12-A9692BA55A25}",
+      "source": "start_apps"
+    },
+    "op auto clicker": {
+      "name": "OP Auto Clicker",
+      "aliases": [
+        "op auto clicker"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Roaming\\OP Auto Clicker\\AutoClicker.exe",
+      "source": "start_apps"
+    },
+    "uninstall op auto clicker": {
+      "name": "Uninstall OP Auto Clicker",
+      "aliases": [
+        "uninstall op auto clicker"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\OP Auto Clicker\\Uninstall OP Auto Clicker.lnk",
+      "source": "shortcut"
+    },
+    "powertoys preview": {
+      "name": "PowerToys (Preview)",
+      "aliases": [
+        "powertoys preview"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.PowerToysWin32",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "roblox player": {
+      "name": "Roblox Player",
+      "aliases": [
+        "roblox player"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Local\\Roblox\\Versions\\version-acc4b74f79e743b9\\RobloxPlayerBeta.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "roblox studio": {
+      "name": "Roblox Studio",
+      "aliases": [
+        "roblox studio"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Local\\Roblox\\Versions\\RobloxStudioInstaller.exe",
+      "source": "start_apps"
+    },
+    "send to onenote": {
+      "name": "Send to OneNote",
+      "aliases": [
+        "send to onenote"
+      ],
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Send to OneNote.lnk",
+      "source": "shortcut"
+    },
+    "command prompt": {
+      "name": "Command Prompt",
+      "aliases": [
+        "command prompt"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\cmd.exe",
+      "source": "start_apps"
+    },
+    "control panel": {
+      "name": "Control Panel",
+      "aliases": [
+        "control panel"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.ControlPanel",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "run": {
+      "name": "Run",
+      "aliases": [
+        "run"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.Shell.RunDialog",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "visual studio code": {
+      "name": "Visual Studio Code",
+      "aliases": [
+        "visual studio code"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.VisualStudioCode",
+      "source": "start_apps",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "windows powershell x86": {
+      "name": "Windows PowerShell (x86)",
+      "aliases": [
+        "windows powershell x86"
+      ],
+      "target": "shell:AppsFolder\\{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "windows powershell": {
+      "name": "Windows PowerShell",
+      "aliases": [
+        "windows powershell"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "calculator": {
+      "name": "calculator",
+      "aliases": [
+        "calculator"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsCalculator_8wekyb3d8bbwe!App",
+      "source": "start_apps",
+      "last_opened": "2026-05-01T17:10:36",
+      "last_seen": "2026-05-01T17:10:36"
+    },
+    "startmenuexperiencehost": {
+      "name": "startmenuexperiencehost",
+      "aliases": [
+        "startmenuexperiencehost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe"
+    },
+    "audiodg": {
+      "name": "audiodg",
+      "aliases": [
+        "audiodg"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "crashpad handler": {
+      "name": "crashpad handler",
+      "aliases": [
+        "crashpad handler"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\SpotifyAB.SpotifyMusic_1.290.451.0_x64__zpdnekdrzrea0\\crashpad_handler.exe"
+    },
+    "powertoys colorpickerui": {
+      "name": "powertoys colorpickerui",
+      "aliases": [
+        "powertoys colorpickerui"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-29T03:15:03"
+    },
+    "conhost": {
+      "name": "conhost",
+      "aliases": [
+        "conhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\system32\\conhost.exe"
+    },
+    "appactions": {
+      "name": "appactions",
+      "aliases": [
+        "actions",
+        "appactions"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-08T21:16:40"
+    },
+    "riotclientcrashhandler": {
+      "name": "riotclientcrashhandler",
+      "aliases": [
+        "riotclientcrashhandler"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Riot Games\\Riot Client\\RiotClientCrashHandler.exe"
+    },
+    "dax3api": {
+      "name": "dax3api",
+      "aliases": [
+        "dax3api"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "nxd": {
+      "name": "nxd",
+      "aliases": [
+        "nxd"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "fontdrvhost": {
+      "name": "fontdrvhost",
+      "aliases": [
+        "fontdrvhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "wudfcompanionhost": {
+      "name": "wudfcompanionhost",
+      "aliases": [
+        "wudfcompanionhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "wsidservice": {
+      "name": "wsidservice",
+      "aliases": [
+        "wsidservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "msmpeng": {
+      "name": "msmpeng",
+      "aliases": [
+        "msmpeng"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "unsecapp": {
+      "name": "unsecapp",
+      "aliases": [
+        "unsec",
+        "unsecapp"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powertoys keyboardmanagerengine": {
+      "name": "powertoys keyboardmanagerengine",
+      "aliases": [
+        "powertoys keyboardmanagerengine"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "filecoauth": {
+      "name": "filecoauth",
+      "aliases": [
+        "filecoauth"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Microsoft OneDrive\\26.095.0519.0003\\FileCoAuth.exe"
+    },
+    "cceventapp": {
+      "name": "cceventapp",
+      "aliases": [
+        "ccevent",
+        "cceventapp"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "last_opened": "2026-06-13T14:10:23",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\asuscsci.inf_amd64_2b922c3711389946\\amd64\\cceventapp.exe"
+    },
+    "igoswserver": {
+      "name": "igoswserver",
+      "aliases": [
+        "igoswserver"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\igoaudioservice.inf_amd64_576f7e32a6afc193\\iGoSwServer.exe"
+    },
+    "wlanext": {
+      "name": "wlanext",
+      "aliases": [
+        "wlanext"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "memory compression": {
+      "name": "memory compression",
+      "aliases": [
+        "memory compression"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "registry": {
+      "name": "registry",
+      "aliases": [
+        "registry"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "blender mcp": {
+      "name": "blender mcp",
+      "aliases": [
+        "blender mcp"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Claude\\Claude Extensions\\ant.dir.gh.blender.blender-mcp\\.venv\\Scripts\\blender-mcp.exe"
+    },
+    "svchost": {
+      "name": "svchost",
+      "aliases": [
+        "svchost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\system32\\svchost.exe"
+    },
+    "asussystemdiagnosis": {
+      "name": "asussystemdiagnosis",
+      "aliases": [
+        "asussystemdiagnosis"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "rtkauduservice64": {
+      "name": "rtkauduservice64",
+      "aliases": [
+        "rtkauduservice64"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\realtekservice.inf_amd64_0492931c2da82bdf\\RtkAudUService64.exe"
+    },
+    "powertoys quickaccess": {
+      "name": "powertoys quickaccess",
+      "aliases": [
+        "powertoys quickaccess"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "ctfmon": {
+      "name": "ctfmon",
+      "aliases": [
+        "ctfmon"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powershell": {
+      "name": "powershell",
+      "aliases": [
+        "powershell"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+    "whatsapp root": {
+      "name": "whatsapp root",
+      "aliases": [
+        "whats root",
+        "whatsapp",
+        "whatsapp root"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "useroobebroker": {
+      "name": "useroobebroker",
+      "aliases": [
+        "useroobebroker"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\oobe\\UserOOBEBroker.exe"
+    },
+    "nissrv": {
+      "name": "nissrv",
+      "aliases": [
+        "nissrv"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "jhi service": {
+      "name": "jhi service",
+      "aliases": [
+        "jhi service"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "gameinputredistservice": {
+      "name": "gameinputredistservice",
+      "aliases": [
+        "gameinputredistservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Microsoft GameInput\\x64\\GameInputRedistService.exe"
+    },
+    "nxnode": {
+      "name": "nxnode",
+      "aliases": [
+        "nxnode"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "system": {
+      "name": "system",
+      "aliases": [
+        "system"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "ngciso": {
+      "name": "ngciso",
+      "aliases": [
+        "ngciso"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "system idle process": {
+      "name": "system idle process",
+      "aliases": [
+        "system idle process"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "taskhostw": {
+      "name": "taskhostw",
+      "aliases": [
+        "taskhostw"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\system32\\taskhostw.exe"
+    },
+    "dashost": {
+      "name": "dashost",
+      "aliases": [
+        "dashost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asusccsystemanalysis": {
+      "name": "asusccsystemanalysis",
+      "aliases": [
+        "asusccsystemanalysis"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\asuscsci.inf_amd64_2b922c3711389946\\amd64\\AsusCcSystemAnalysis.exe"
+    },
+    "searchprotocolhost": {
+      "name": "searchprotocolhost",
+      "aliases": [
+        "searchprotocolhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "lockapp": {
+      "name": "lockapp",
+      "aliases": [
+        "lock",
+        "lockapp"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16",
+      "target": "C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe"
+    },
+    "chatgpt": {
+      "name": "chatgpt",
+      "aliases": [
+        "chatgpt"
+      ],
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "shell:AppsFolder\\OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0!ChatGPT"
+    },
+    "cmd": {
+      "name": "cmd",
+      "aliases": [
+        "cmd"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16",
+      "target": "C:\\Windows\\system32\\cmd.exe"
+    },
+    "smss": {
+      "name": "smss",
+      "aliases": [
+        "smss"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "asussystemanalysis": {
+      "name": "asussystemanalysis",
+      "aliases": [
+        "asussystemanalysis"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "backgroundtaskhost": {
+      "name": "backgroundtaskhost",
+      "aliases": [
+        "backgroundtaskhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\system32\\backgroundTaskHost.exe"
+    },
+    "searchindexer": {
+      "name": "searchindexer",
+      "aliases": [
+        "searchindexer"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "onedrive sync service": {
+      "name": "onedrive sync service",
+      "aliases": [
+        "onedrive sync service"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "dwm": {
+      "name": "dwm",
+      "aliases": [
+        "dwm"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "applicationframehost": {
+      "name": "applicationframehost",
+      "aliases": [
+        "applicationframehost",
+        "licationframehost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16",
+      "target": "C:\\Windows\\system32\\ApplicationFrameHost.exe"
+    },
+    "secure system": {
+      "name": "secure system",
+      "aliases": [
+        "secure system"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "riotclientservices": {
+      "name": "riotclientservices",
+      "aliases": [
+        "riotclientservices"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Riot Games\\Riot Client\\RiotClientServices.exe"
+    },
+    "jucheck": {
+      "name": "jucheck",
+      "aliases": [
+        "jucheck"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files (x86)\\Common Files\\Java\\Java Update\\jucheck.exe"
+    },
+    "wininit": {
+      "name": "wininit",
+      "aliases": [
+        "wininit"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powertoys alwaysontop": {
+      "name": "powertoys alwaysontop",
+      "aliases": [
+        "powertoys alwaysontop"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "widgets": {
+      "name": "widgets",
+      "aliases": [
+        "widgets"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\MicrosoftWindows.Client.WebExperience_526.11701.50.0_x64__cw5n1h2txyewy\\Dashboard\\Widgets.exe"
+    },
+    "ms teams": {
+      "name": "ms teams",
+      "aliases": [
+        "ms teams"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "spotify": {
+      "name": "spotify",
+      "aliases": [
+        "spotify"
+      ],
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "last_opened": "2026-05-29T02:54:22",
+      "target": "shell:AppsFolder\\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify"
+    },
+    "sdxhelper": {
+      "name": "sdxhelper",
+      "aliases": [
+        "sdxhelper"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Microsoft Office\\Root\\Office16\\SDXHelper.exe"
+    },
+    "wmiregistrationservice": {
+      "name": "wmiregistrationservice",
+      "aliases": [
+        "wmiregistrationservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "igoaudioservice x64": {
+      "name": "igoaudioservice x64",
+      "aliases": [
+        "igoaudioservice x64"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "applemobiledeviceservice": {
+      "name": "applemobiledeviceservice",
+      "aliases": [
+        "applemobiledeviceservice",
+        "lemobiledeviceservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "nxservice64": {
+      "name": "nxservice64",
+      "aliases": [
+        "nxservice64"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "usbipd": {
+      "name": "usbipd",
+      "aliases": [
+        "usbipd"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asusappservice": {
+      "name": "asusappservice",
+      "aliases": [
+        "asusappservice",
+        "asusservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asusswitch": {
+      "name": "asusswitch",
+      "aliases": [
+        "asusswitch"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "hpprintscandoctorservice": {
+      "name": "hpprintscandoctorservice",
+      "aliases": [
+        "hpprintscandoctorservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "tasklist": {
+      "name": "tasklist",
+      "aliases": [
+        "tasklist"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asusosd": {
+      "name": "asusosd",
+      "aliases": [
+        "asusosd"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "securityhealthsystray": {
+      "name": "securityhealthsystray",
+      "aliases": [
+        "securityhealthsystray"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\SecurityHealthSystray.exe"
+    },
+    "python3 12": {
+      "name": "python3 12",
+      "aliases": [
+        "python3 12"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "node repl": {
+      "name": "node repl",
+      "aliases": [
+        "node repl"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\789504f803e82e2b\\bin\\node_repl.exe"
+    },
+    "microsoft cmdpal ext powertoys": {
+      "name": "microsoft cmdpal ext powertoys",
+      "aliases": [
+        "microsoft cmdpal ext powertoys"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "wudfhost": {
+      "name": "wudfhost",
+      "aliases": [
+        "wudfhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "csrss": {
+      "name": "csrss",
+      "aliases": [
+        "csrss"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "panel": {
+      "name": "panel",
+      "aliases": [
+        "panel"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\ASUS ExpertPanel\\panel.exe"
+    },
+    "intelcphdcpsvc": {
+      "name": "intelcphdcpsvc",
+      "aliases": [
+        "intelcphdcpsvc"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "msedgewebview2": {
+      "name": "msedgewebview2",
+      "aliases": [
+        "msedgewebview2"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\149.0.4022.62\\msedgewebview2.exe"
+    },
+    "officeclicktorun": {
+      "name": "officeclicktorun",
+      "aliases": [
+        "officeclicktorun"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "installassistservice": {
+      "name": "installassistservice",
+      "aliases": [
+        "installassistservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powertoys": {
+      "name": "powertoys",
+      "aliases": [
+        "powertoys"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\PowerToys\\WinUI3Apps\\PowerToys.QuickAccess.exe"
+    },
+    "rpcnet": {
+      "name": "rpcnet",
+      "aliases": [
+        "rpcnet"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "nxserver": {
+      "name": "nxserver",
+      "aliases": [
+        "nxserver"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "shellhost": {
+      "name": "shellhost",
+      "aliases": [
+        "shellhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\ShellHost.exe"
+    },
+    "gamingservicesnet": {
+      "name": "gamingservicesnet",
+      "aliases": [
+        "gamingservicesnet"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "openconsole": {
+      "name": "openconsole",
+      "aliases": [
+        "openconsole"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\\OpenConsole.exe"
+    },
+    "winlogon": {
+      "name": "winlogon",
+      "aliases": [
+        "winlogon"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "vmcompute": {
+      "name": "vmcompute",
+      "aliases": [
+        "vmcompute"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "windowspackagemanagerserver": {
+      "name": "windowspackagemanagerserver",
+      "aliases": [
+        "windowspackagemanagerserver"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.DesktopAppInstaller_1.28.239.0_x64__8wekyb3d8bbwe\\WindowsPackageManagerServer.exe"
+    },
+    "windowsterminal": {
+      "name": "windowsterminal",
+      "aliases": [
+        "windowsterminal"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.24.11321.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe"
+    },
+    "lsass": {
+      "name": "lsass",
+      "aliases": [
+        "lsass"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "fluentflyout": {
+      "name": "fluentflyout",
+      "aliases": [
+        "fluentflyout"
+      ],
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "shell:AppsFolder\\unchihugo.FluentFlyout_69b7b6qge1ahj!App"
+    },
+    "tailscale ipn": {
+      "name": "tailscale ipn",
+      "aliases": [
+        "tailscale ipn"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Tailscale\\tailscale-ipn.exe"
+    },
+    "rundll32": {
+      "name": "rundll32",
+      "aliases": [
+        "rundll32"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-29T03:15:02"
+    },
+    "midisrv": {
+      "name": "midisrv",
+      "aliases": [
+        "midisrv"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "runtimebroker": {
+      "name": "runtimebroker",
+      "aliases": [
+        "runtimebroker"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\RuntimeBroker.exe"
+    },
+    "lively watchdog": {
+      "name": "lively watchdog",
+      "aliases": [
+        "lively watchdog"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "ipf uf": {
+      "name": "ipf uf",
+      "aliases": [
+        "ipf uf"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powertoys fancyzones": {
+      "name": "powertoys fancyzones",
+      "aliases": [
+        "powertoys fancyzones"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "crossdeviceresume": {
+      "name": "crossdeviceresume",
+      "aliases": [
+        "crossdeviceresume"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe"
+    },
+    "asussoftwaremanageragent": {
+      "name": "asussoftwaremanageragent",
+      "aliases": [
+        "asussoftwaremanageragent"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "wslservice": {
+      "name": "wslservice",
+      "aliases": [
+        "wslservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "chrome": {
+      "name": "chrome",
+      "aliases": [
+        "chrome"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-31T15:34:52",
+      "last_opened": "2026-05-10T23:37:30"
+    },
+    "textinputhost": {
+      "name": "textinputhost",
+      "aliases": [
+        "textinputhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe"
+    },
+    "mpdefendercoreservice": {
+      "name": "mpdefendercoreservice",
+      "aliases": [
+        "mpdefendercoreservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "tailscaled": {
+      "name": "tailscaled",
+      "aliases": [
+        "tailscaled"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "robloxplayerbeta": {
+      "name": "robloxplayerbeta",
+      "aliases": [
+        "robloxplayerbeta"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\Roblox\\Versions\\version-acc4b74f79e743b9\\RobloxPlayerBeta.exe"
+    },
+    "ccservice": {
+      "name": "ccservice",
+      "aliases": [
+        "ccservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "pet": {
+      "name": "pet",
+      "aliases": [
+        "pet"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "ipf helper": {
+      "name": "ipf helper",
+      "aliases": [
+        "ipf helper"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\ipf_cpu.inf_amd64_fe2967a6eb0d3a7d\\ipf_helper.exe"
+    },
+    "lively player webview2": {
+      "name": "lively player webview2",
+      "aliases": [
+        "lively player webview2"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "spotifylauncher": {
+      "name": "spotifylauncher",
+      "aliases": [
+        "spotifylauncher"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\SpotifyAB.SpotifyMusic_1.290.451.0_x64__zpdnekdrzrea0\\SpotifyLauncher.exe"
+    },
+    "intelgraphicssoftware service": {
+      "name": "intelgraphicssoftware service",
+      "aliases": [
+        "intelgraphicssoftware service"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "sihost": {
+      "name": "sihost",
+      "aliases": [
+        "sihost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\system32\\sihost.exe"
+    },
+    "jusched": {
+      "name": "jusched",
+      "aliases": [
+        "jusched"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files (x86)\\Common Files\\Java\\Java Update\\jusched.exe"
+    },
+    "codex": {
+      "name": "codex",
+      "aliases": [
+        "codex"
+      ],
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "shell:AppsFolder\\OpenAI.Codex_2p2nqsd0c76g0!App"
+    },
+    "onenotem": {
+      "name": "onenotem",
+      "aliases": [
+        "onenotem"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-08T21:16:40",
+      "target": "C:\\Program Files\\Microsoft Office\\root\\Office16\\ONENOTEM.EXE"
+    },
+    "spoolsv": {
+      "name": "spoolsv",
+      "aliases": [
+        "spoolsv"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "intel cst service standalone": {
+      "name": "intel cst service standalone",
+      "aliases": [
+        "intel cst service standalone"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "powertoys powerlauncher": {
+      "name": "powertoys powerlauncher",
+      "aliases": [
+        "powertoys powerlauncher"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "code tunnel": {
+      "name": "code tunnel",
+      "aliases": [
+        "code tunnel"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code-tunnel.exe"
+    },
+    "asusoptimizationstartuptask": {
+      "name": "asusoptimizationstartuptask",
+      "aliases": [
+        "asusoptimizationstartuptask"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\System32\\DriverStore\\FileRepository\\asussci2.inf_amd64_3eb06da3aad59dcc\\ASUSOptimization\\AsusOptimizationStartupTask.exe"
+    },
+    "elevationservice": {
+      "name": "elevationservice",
+      "aliases": [
+        "elevationservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "asusoptimization": {
+      "name": "asusoptimization",
+      "aliases": [
+        "asusoptimization"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "xboxgamebarspotify": {
+      "name": "xboxgamebarspotify",
+      "aliases": [
+        "xboxgamebarspotify"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-01T21:37:39"
+    },
+    "uv": {
+      "name": "uv",
+      "aliases": [
+        "uv"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Claude\\uv-runtime\\uv-0.9.7-win32-x64\\uv.exe"
+    },
+    "aggregatorhost": {
+      "name": "aggregatorhost",
+      "aliases": [
+        "aggregatorhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "code": {
+      "name": "code",
+      "aliases": [
+        "code"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "nxrunner": {
+      "name": "nxrunner",
+      "aliases": [
+        "nxrunner"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\NoMachine\\bin\\nxrunner.bin"
+    },
+    "securityhealthservice": {
+      "name": "securityhealthservice",
+      "aliases": [
+        "securityhealthservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "ollama app": {
+      "name": "ollama app",
+      "aliases": [
+        "ollama",
+        "ollama app"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\Programs\\Ollama\\ollama app.exe"
+    },
+    "m365copilot": {
+      "name": "m365copilot",
+      "aliases": [
+        "m365copilot"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "powertoys cropandlock": {
+      "name": "powertoys cropandlock",
+      "aliases": [
+        "powertoys cropandlock"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asussoftwaremanager": {
+      "name": "asussoftwaremanager",
+      "aliases": [
+        "asussoftwaremanager"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "ipfsvc": {
+      "name": "ipfsvc",
+      "aliases": [
+        "ipfsvc"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "lsaiso": {
+      "name": "lsaiso",
+      "aliases": [
+        "lsaiso"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "morphochaining": {
+      "name": "morphochaining",
+      "aliases": [
+        "morphochaining"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "wmiprvse": {
+      "name": "wmiprvse",
+      "aliases": [
+        "wmiprvse"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "asusupdatehubsvc": {
+      "name": "asusupdatehubsvc",
+      "aliases": [
+        "asusupdatehubsvc"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "powertoys awake": {
+      "name": "powertoys awake",
+      "aliases": [
+        "powertoys awake"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "mdnsresponder": {
+      "name": "mdnsresponder",
+      "aliases": [
+        "mdnsresponder"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "searchhost": {
+      "name": "searchhost",
+      "aliases": [
+        "searchhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe"
+    },
+    "werfault": {
+      "name": "werfault",
+      "aliases": [
+        "werfault"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-01T21:37:40"
+    },
+    "presentmonservice": {
+      "name": "presentmonservice",
+      "aliases": [
+        "presentmonservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "mscopilot proxy": {
+      "name": "mscopilot proxy",
+      "aliases": [
+        "mscopilot proxy"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-29T03:15:02"
+    },
+    "vgtray": {
+      "name": "vgtray",
+      "aliases": [
+        "vgtray"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Riot Vanguard\\vgtray.exe"
+    },
+    "rstmwservice": {
+      "name": "rstmwservice",
+      "aliases": [
+        "rstmwservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "filesynchelper": {
+      "name": "filesynchelper",
+      "aliases": [
+        "filesynchelper"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "robloxcrashhandler": {
+      "name": "robloxcrashhandler",
+      "aliases": [
+        "robloxcrashhandler"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\Roblox\\Versions\\version-acc4b74f79e743b9\\RobloxCrashHandler.exe"
+    },
+    "lively": {
+      "name": "lively",
+      "aliases": [
+        "lively"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\12030rocksdanister.LivelyWallpaper_1.0.163.0_x64__97hta09mmv6hy\\Build\\Plugins\\Watchdog\\Lively.Watchdog.exe"
+    },
+    "microsoft cmdpal ui": {
+      "name": "microsoft cmdpal ui",
+      "aliases": [
+        "microsoft cmdpal ui"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "explorer": {
+      "name": "explorer",
+      "aliases": [
+        "explorer"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\Explorer.EXE"
+    },
+    "dllhost": {
+      "name": "dllhost",
+      "aliases": [
+        "dllhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-08T21:16:40"
+    },
+    "powertoys mousejumpui": {
+      "name": "powertoys mousejumpui",
+      "aliases": [
+        "powertoys mousejumpui"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "python": {
+      "name": "python",
+      "aliases": [
+        "python"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Roaming\\Claude\\Claude Extensions\\ant.dir.gh.blender.blender-mcp\\.venv\\Scripts\\python.exe"
+    },
+    "gamingservices": {
+      "name": "gamingservices",
+      "aliases": [
+        "gamingservices"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "xboxpcappft": {
+      "name": "xboxpcappft",
+      "aliases": [
+        "xboxpcappft",
+        "xboxpcft"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.GamingApp_2605.1001.14.0_x64__8wekyb3d8bbwe\\XboxPcAppFT.exe"
+    },
+    "intelaudioservice": {
+      "name": "intelaudioservice",
+      "aliases": [
+        "intelaudioservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "widgetservice": {
+      "name": "widgetservice",
+      "aliases": [
+        "widgetservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.WidgetsPlatformRuntime_1.6.19.0_x64__8wekyb3d8bbwe\\WidgetService\\WidgetService.exe"
+    },
+    "click to do": {
+      "name": "Click to Do",
+      "aliases": [
+        "click to do"
+      ],
+      "target": "shell:AppsFolder\\MicrosoftWindows.Client.CoreAI_cw5n1h2txyewy!ClickToDoApp",
+      "source": "start_apps"
+    },
+    "defragment and optimize drives": {
+      "name": "Defragment and Optimize Drives",
+      "aliases": [
+        "defragment and optimize drives"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\dfrgui.exe",
+      "source": "start_apps"
+    },
+    "get started": {
+      "name": "Get Started",
+      "aliases": [
+        "get started"
+      ],
+      "target": "shell:AppsFolder\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy!WebExperienceHost",
+      "source": "start_apps"
+    },
+    "kali linux": {
+      "name": "kali-linux",
+      "aliases": [
+        "kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{5E14CEEB-3BF6-DBEA-3CCE-09B22DAF37BF}",
+      "source": "start_apps"
+    },
+    "live captions": {
+      "name": "Live captions",
+      "aliases": [
+        "live captions"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\LiveCaptions.exe",
+      "source": "start_apps"
+    },
+    "magnifier": {
+      "name": "Magnifier",
+      "aliases": [
+        "magnifier"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\magnify.exe",
+      "source": "start_apps"
+    },
+    "recovery drive": {
+      "name": "Recovery Drive",
+      "aliases": [
+        "recovery drive"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\RecoveryDrive.exe",
+      "source": "start_apps"
+    },
+    "settings": {
+      "name": "Settings",
+      "aliases": [
+        "settings"
+      ],
+      "target": "shell:AppsFolder\\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "voice access": {
+      "name": "Voice access",
+      "aliases": [
+        "voice access"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\voiceaccess.exe",
+      "source": "start_apps"
+    },
+    "windows backup": {
+      "name": "Windows Backup",
+      "aliases": [
+        "windows backup"
+      ],
+      "target": "shell:AppsFolder\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy!WindowsBackup",
+      "source": "start_apps"
+    },
+    "windows memory diagnostic": {
+      "name": "Windows Memory Diagnostic",
+      "aliases": [
+        "windows memory diagnostic"
+      ],
+      "target": "shell:AppsFolder\\{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\MdSched.exe",
+      "source": "start_apps"
+    },
+    "windows tools": {
+      "name": "Windows Tools",
+      "aliases": [
+        "windows tools"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.AdministrativeTools",
+      "source": "start_apps"
+    },
+    "whatsapp": {
+      "name": "whatsapp",
+      "aliases": [
+        "whats",
+        "whatsapp"
+      ],
+      "source": "start_apps",
+      "last_opened": "2026-05-29T20:05:52",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "shell:AppsFolder\\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+    },
+    "blender 5 1 1": {
+      "name": "Blender 5.1.1.0",
+      "aliases": [
+        "blender 5 1 1"
+      ],
+      "target": "shell:AppsFolder\\BlenderFoundation.Blender_ppwjx1n5r4v9t!BLENDER",
+      "source": "start_apps"
+    },
+    "camera": {
+      "name": "Camera",
+      "aliases": [
+        "camera"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsCamera_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "clock": {
+      "name": "Clock",
+      "aliases": [
+        "clock"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsAlarms_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "command palette": {
+      "name": "Command Palette",
+      "aliases": [
+        "command palette"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.CommandPalette_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "copilot": {
+      "name": "Copilot",
+      "aliases": [
+        "copilot"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Copilot_8wekyb3d8bbwe!App",
+      "source": "start_apps",
+      "last_seen": "2026-05-29T03:15:02",
+      "last_opened": "2026-05-01T21:37:23"
+    },
+    "dolby access": {
+      "name": "Dolby Access",
+      "aliases": [
+        "dolby access"
+      ],
+      "target": "shell:AppsFolder\\DolbyLaboratories.DolbyAccess_rz1tebttyb220!App",
+      "source": "start_apps"
+    },
+    "family": {
+      "name": "Family",
+      "aliases": [
+        "family"
+      ],
+      "target": "shell:AppsFolder\\MicrosoftCorporationII.MicrosoftFamily_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "feedback hub": {
+      "name": "Feedback Hub",
+      "aliases": [
+        "feedback hub"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "game bar": {
+      "name": "Game Bar",
+      "aliases": [
+        "game bar"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.XboxGamingOverlay_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "hp smart": {
+      "name": "HP Smart",
+      "aliases": [
+        "hp smart"
+      ],
+      "target": "shell:AppsFolder\\AD2F1837.HPPrinterControl_v10z8vjag6ke6!AD2F1837.HPPrinterControl",
+      "source": "start_apps"
+    },
+    "idle python 3": {
+      "name": "IDLE (Python 3.12)",
+      "aliases": [
+        "idle python 3"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{027825F6-088C-05FC-1F86-8CE8B5C02AB1}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "intelr graphics command center": {
+      "name": "Intelr Graphics Command Center",
+      "aliases": [
+        "intelr graphics command center"
+      ],
+      "target": "shell:AppsFolder\\AppUp.IntelGraphicsExperience_8j3eq9eme6ctt!App",
+      "source": "start_apps"
+    },
+    "intelr graphics software": {
+      "name": "Intelr Graphics Software",
+      "aliases": [
+        "intelr graphics software"
+      ],
+      "target": "shell:AppsFolder\\AppUp.IntelArcSoftware_8j3eq9eme6ctt!INTELGRAPHICSSOFTWARE",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "lively wallpaper": {
+      "name": "Lively Wallpaper",
+      "aliases": [
+        "lively wallpaper"
+      ],
+      "target": "shell:AppsFolder\\12030rocksdanister.LivelyWallpaper_97hta09mmv6hy!App",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "media player": {
+      "name": "Media Player",
+      "aliases": [
+        "media player"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.ZuneMusic_8wekyb3d8bbwe!Microsoft.ZuneMusic",
+      "source": "start_apps"
+    },
+    "microsoft 365 copilot": {
+      "name": "Microsoft 365 Copilot",
+      "aliases": [
+        "microsoft 365 copilot"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe!Microsoft.MicrosoftOfficeHub",
+      "source": "start_apps"
+    },
+    "microsoft clipchamp": {
+      "name": "Microsoft Clipchamp",
+      "aliases": [
+        "microsoft clipchamp"
+      ],
+      "target": "shell:AppsFolder\\Clipchamp.Clipchamp_yxz26nhyzhsrt!App",
+      "source": "start_apps"
+    },
+    "microsoft store": {
+      "name": "Microsoft Store",
+      "aliases": [
+        "microsoft store"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsStore_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "microsoft teams": {
+      "name": "Microsoft Teams",
+      "aliases": [
+        "microsoft teams"
+      ],
+      "target": "shell:AppsFolder\\MSTeams_8wekyb3d8bbwe!MSTeams",
+      "source": "start_apps"
+    },
+    "microsoft to do": {
+      "name": "Microsoft To Do",
+      "aliases": [
+        "microsoft to do"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Todos_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "myasus": {
+      "name": "MyASUS",
+      "aliases": [
+        "myasus"
+      ],
+      "target": "shell:AppsFolder\\B9ECED6F.ASUSPCAssistant_qmba6cd70vzyy!App",
+      "source": "start_apps"
+    },
+    "news": {
+      "name": "News",
+      "aliases": [
+        "news"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.BingNews_8wekyb3d8bbwe!AppexNews",
+      "source": "start_apps"
+    },
+    "notepad": {
+      "name": "Notepad",
+      "aliases": [
+        "notepad"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsNotepad_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "outlook": {
+      "name": "Outlook",
+      "aliases": [
+        "outlook"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.OutlookForWindows_8wekyb3d8bbwe!Microsoft.OutlookforWindows",
+      "source": "start_apps"
+    },
+    "paint": {
+      "name": "Paint",
+      "aliases": [
+        "paint"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Paint_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "phone link": {
+      "name": "Phone Link",
+      "aliases": [
+        "phone link"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.YourPhone_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "photos": {
+      "name": "Photos",
+      "aliases": [
+        "photos"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.Windows.Photos_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "power automate": {
+      "name": "Power Automate",
+      "aliases": [
+        "power automate"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.PowerAutomateDesktop_8wekyb3d8bbwe!PAD.Console",
+      "source": "start_apps"
+    },
+    "python 3": {
+      "name": "Python 3.12",
+      "aliases": [
+        "python 3"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{AC960597-0787-2C01-7ED7-6A53B1C5B178}",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "quick assist": {
+      "name": "Quick Assist",
+      "aliases": [
+        "quick assist"
+      ],
+      "target": "shell:AppsFolder\\MicrosoftCorporationII.QuickAssist_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "realtek audio console": {
+      "name": "Realtek Audio Console",
+      "aliases": [
+        "realtek audio console"
+      ],
+      "target": "shell:AppsFolder\\RealtekSemiconductorCorp.RealtekAudioControl_dt26b99r8h8gj!App",
+      "source": "start_apps"
+    },
+    "screen recorder screen record screen capture": {
+      "name": "Screen recorder - Screen record & Screen capture",
+      "aliases": [
+        "screen recorder screen record screen capture"
+      ],
+      "target": "shell:AppsFolder\\WuhanNetPowerTechnologyCo.59298FDEA773D_63m8b6nby1dvp!App",
+      "source": "start_apps"
+    },
+    "snipping tool": {
+      "name": "Snipping Tool",
+      "aliases": [
+        "snipping tool"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.ScreenSketch_8wekyb3d8bbwe!App",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "solitaire casual games": {
+      "name": "Solitaire & Casual Games",
+      "aliases": [
+        "solitaire casual games"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "sound recorder": {
+      "name": "Sound Recorder",
+      "aliases": [
+        "sound recorder"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "sticky notes": {
+      "name": "Sticky Notes",
+      "aliases": [
+        "sticky notes"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "terminal": {
+      "name": "Terminal",
+      "aliases": [
+        "terminal"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.WindowsTerminal_8wekyb3d8bbwe!App",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "weather": {
+      "name": "Weather",
+      "aliases": [
+        "weather"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.BingWeather_8wekyb3d8bbwe!App",
+      "source": "start_apps"
+    },
+    "windows security": {
+      "name": "Windows Security",
+      "aliases": [
+        "windows security"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.SecHealthUI_8wekyb3d8bbwe!SecHealthUI",
+      "source": "start_apps"
+    },
+    "xbox": {
+      "name": "Xbox",
+      "aliases": [
+        "xbox"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.GamingApp_8wekyb3d8bbwe!Microsoft.Xbox.App",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "pickerhost": {
+      "name": "pickerhost",
+      "aliases": [
+        "pickerhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-01T21:37:39"
+    },
+    "systemsettings": {
+      "name": "systemsettings",
+      "aliases": [
+        "systemsettings"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe"
+    },
+    "rtkuwp": {
+      "name": "rtkuwp",
+      "aliases": [
+        "rtkuwp"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-29T03:15:02"
+    },
+    "spatialaudiolicensesrv": {
+      "name": "spatialaudiolicensesrv",
+      "aliases": [
+        "spatialaudiolicensesrv"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-01T21:37:23"
+    },
+    "smartscreen": {
+      "name": "smartscreen",
+      "aliases": [
+        "smartscreen"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:10:22"
+    },
+    "identity helper": {
+      "name": "identity helper",
+      "aliases": [
+        "identity helper"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-01T21:37:39"
+    },
+    "mscopilot": {
+      "name": "mscopilot",
+      "aliases": [
+        "mscopilot"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "handbrake": {
+      "name": "HandBrake",
+      "aliases": [
+        "handbrake"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\HandBrake\\HandBrake.exe",
+      "source": "start_apps"
+    },
+    "movavi video editor 26": {
+      "name": "Movavi Video Editor 26",
+      "aliases": [
+        "movavi video editor 26"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Roaming\\Movavi Video Editor 26\\VideoEditor.exe",
+      "source": "start_apps"
+    },
+    "uninstall movavi video editor 26": {
+      "name": "Uninstall Movavi Video Editor 26",
+      "aliases": [
+        "uninstall movavi video editor 26"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Roaming\\Movavi Video Editor 26\\uninst.exe",
+      "source": "start_apps"
+    },
+    "website movavi video editor 26": {
+      "name": "Website Movavi Video Editor 26",
+      "aliases": [
+        "website movavi video editor 26"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\AppData\\Roaming\\Movavi Video Editor 26\\Movavi Video Editor 26.url",
+      "source": "start_apps"
+    },
+    "msedge": {
+      "name": "msedge",
+      "aliases": [
+        "msedge"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+    },
+    "appvshnotify": {
+      "name": "appvshnotify",
+      "aliases": [
+        "appvshnotify",
+        "vshnotify"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\AppVShNotify.exe"
+    },
+    "gameinputsvc": {
+      "name": "gameinputsvc",
+      "aliases": [
+        "gameinputsvc"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "cloudcode cli": {
+      "name": "cloudcode cli",
+      "aliases": [
+        "cloudcode cli"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "searchfilterhost": {
+      "name": "searchfilterhost",
+      "aliases": [
+        "searchfilterhost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-10T23:37:29"
+    },
+    "powertoys advancedpaste": {
+      "name": "powertoys advancedpaste",
+      "aliases": [
+        "powertoys advancedpaste"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "shellexperiencehost": {
+      "name": "shellexperiencehost",
+      "aliases": [
+        "shellexperiencehost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe"
+    },
+    "powertoys peek ui": {
+      "name": "powertoys peek ui",
+      "aliases": [
+        "powertoys peek ui"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "sshd": {
+      "name": "sshd",
+      "aliases": [
+        "sshd"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "tiworker": {
+      "name": "tiworker",
+      "aliases": [
+        "tiworker"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "microsoftedgeupdate": {
+      "name": "microsoftedgeupdate",
+      "aliases": [
+        "microsoftedgeupdate"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "m365copilot autostarter": {
+      "name": "m365copilot autostarter",
+      "aliases": [
+        "m365copilot autostarter"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "storedesktopextension": {
+      "name": "storedesktopextension",
+      "aliases": [
+        "storedesktopextension",
+        "storeextension"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "trustedinstaller": {
+      "name": "trustedinstaller",
+      "aliases": [
+        "trustedinstaller"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "wmiadap": {
+      "name": "wmiadap",
+      "aliases": [
+        "wmiadap"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "msiexec": {
+      "name": "msiexec",
+      "aliases": [
+        "msiexec"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "systemsettingsadminflows": {
+      "name": "systemsettingsadminflows",
+      "aliases": [
+        "systemsettingsadminflows"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-20T10:52:43"
+    },
+    "bluestacks 5": {
+      "name": "BlueStacks 5",
+      "aliases": [
+        "bluestacks 5"
+      ],
+      "target": "shell:AppsFolder\\BlueStacks_nxt",
+      "source": "start_apps"
+    },
+    "bluestacks multi instance manager": {
+      "name": "BlueStacks Multi-Instance Manager",
+      "aliases": [
+        "bluestacks multi instance manager"
+      ],
+      "target": "shell:AppsFolder\\{6D809377-6AF0-444B-8957-A3773F02200E}\\BlueStacks_nxt\\HD-MultiInstanceManager.exe",
+      "source": "start_apps"
+    },
+    "aomei partition assistant 10 10": {
+      "name": "AOMEI Partition Assistant 10.10.1",
+      "aliases": [
+        "aomei partition assistant 10 10"
+      ],
+      "target": "shell:AppsFolder\\{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\\AOMEI Partition Assistant\\PartAssist.exe",
+      "source": "start_apps"
+    },
+    "uninstall aomei partition assistant": {
+      "name": "Uninstall AOMEI Partition Assistant",
+      "aliases": [
+        "uninstall aomei partition assistant"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\AOMEI Partition Assistant\\Uninstall AOMEI Partition Assistant.lnk",
+      "source": "shortcut"
+    },
+    "user help": {
+      "name": "User Help",
+      "aliases": [
+        "user help"
+      ],
+      "target": "shell:AppsFolder\\{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\\AOMEI Partition Assistant\\Help.exe",
+      "source": "start_apps"
+    },
+    "user manual pdf": {
+      "name": "User Manual (PDF)",
+      "aliases": [
+        "user manual pdf"
+      ],
+      "target": "shell:AppsFolder\\{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\\AOMEI Partition Assistant\\Manual.PDF",
+      "source": "start_apps"
+    },
+    "visit our website": {
+      "name": "Visit our website",
+      "aliases": [
+        "visit our website"
+      ],
+      "target": "shell:AppsFolder\\https://www.diskpart.com",
+      "source": "start_apps"
+    },
+    "bluestacks store": {
+      "name": "BlueStacks Store",
+      "aliases": [
+        "bluestacks store"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\OneDrive\\Documents\\mayur\\BlueStacks X\\BlueStacks X.exe",
+      "source": "start_apps"
+    },
+    "data collection settings": {
+      "name": "Data Collection Settings",
+      "aliases": [
+        "data collection settings"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{09B493A1-04F0-2775-060A-D01E0D8267D7}",
+      "source": "start_apps"
+    },
+    "hp mfp scan": {
+      "name": "HP MFP Scan",
+      "aliases": [
+        "hp mfp scan"
+      ],
+      "target": "shell:AppsFolder\\{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\\HP\\MFP Scan\\EDC.exe",
+      "source": "start_apps"
+    },
+    "hp printer software uninstaller": {
+      "name": "HP Printer Software Uninstaller",
+      "aliases": [
+        "hp printer software uninstaller"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\HP\\HP Laser Printers\\HP Printer Software Uninstaller.lnk",
+      "source": "shortcut"
+    },
+    "bluestacks services": {
+      "name": "BlueStacks Services",
+      "aliases": [
+        "bluestacks services"
+      ],
+      "target": "shell:AppsFolder\\com.bluestacks.services",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "youtube music": {
+      "name": "YouTube Music",
+      "aliases": [
+        "youtube music"
+      ],
+      "target": "shell:AppsFolder\\Chrome._crx_cinhimbnkkghhklpknlkffjgod",
+      "source": "start_apps",
+      "last_opened": "2026-05-29T03:15:03",
+      "last_seen": "2026-05-29T03:15:03"
+    },
+    "hyperspace kali linux": {
+      "name": "Hyperspace (kali-linux)",
+      "aliases": [
+        "hyperspace kali linux"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{389558DD-87CF-1676-C690-1F357F6D5412}",
+      "source": "start_apps"
+    },
+    "blender 5 1 2": {
+      "name": "Blender 5.1.2.0",
+      "aliases": [
+        "blender 5 1 2"
+      ],
+      "target": "shell:AppsFolder\\BlenderFoundation.Blender_ppwjx1n5r4v9t!BLENDER",
+      "source": "start_apps"
+    },
+    "hp laser printer software uninstaller": {
+      "name": "HP Laser Printer Software Uninstaller",
+      "aliases": [
+        "hp laser printer software uninstaller"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.AutoGenerated.{DB40BC93-0BB3-6488-109D-AB9AFA927F9B}",
+      "source": "start_apps"
+    },
+    "minecraft launcher": {
+      "name": "Minecraft Launcher",
+      "aliases": [
+        "minecraft launcher"
+      ],
+      "target": "shell:AppsFolder\\Microsoft.4297127D64EC6_8wekyb3d8bbwe!Minecraft",
+      "source": "start_apps"
+    },
+    "extension host": {
+      "name": "extension host",
+      "aliases": [
+        "extension host"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-05-31T15:34:52"
+    },
+    "snippingtool": {
+      "name": "snippingtool",
+      "aliases": [
+        "snippingtool"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.ScreenSketch_11.2602.49.0_x64__8wekyb3d8bbwe\\SnippingTool\\SnippingTool.exe"
+    },
+    "rustdesk": {
+      "name": "RustDesk",
+      "aliases": [
+        "rustdesk"
+      ],
+      "target": "shell:AppsFolder\\C:\\Users\\infom\\Documents\\mayur\\random zips\\rust desk\\RustDesk\\rustdesk.exe",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "uninstall rustdesk": {
+      "name": "Uninstall RustDesk",
+      "aliases": [
+        "uninstall rustdesk"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\RustDesk\\Uninstall RustDesk.lnk",
+      "source": "shortcut",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "rustdesk tray": {
+      "name": "RustDesk Tray",
+      "aliases": [
+        "rustdesk tray"
+      ],
+      "target": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\RustDesk Tray.lnk",
+      "source": "shortcut",
+      "last_seen": "2026-06-13T14:59:16"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "aliases": [
+        "cursor"
+      ],
+      "target": "shell:AppsFolder\\Anysphere.Cursor",
+      "source": "start_apps",
+      "last_seen": "2026-06-08T21:16:40"
+    },
+    "dataexchangehost": {
+      "name": "dataexchangehost",
+      "aliases": [
+        "dataexchangehost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16",
+      "target": "C:\\Windows\\System32\\DataExchangeHost.exe"
+    },
+    "yourphoneappproxy": {
+      "name": "yourphoneappproxy",
+      "aliases": [
+        "yourphoneappproxy",
+        "yourphoneproxy"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:16",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26042.95.0_x64__8wekyb3d8bbwe\\YourPhoneAppProxy.exe"
+    },
+    "wmpnetwk": {
+      "name": "wmpnetwk",
+      "aliases": [
+        "wmpnetwk"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "crossdeviceservice": {
+      "name": "crossdeviceservice",
+      "aliases": [
+        "crossdeviceservice"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\MicrosoftWindows.CrossDevice_1.26042.107.0_x64__cw5n1h2txyewy\\CrossDeviceService.exe"
+    },
+    "llama server": {
+      "name": "llama server",
+      "aliases": [
+        "llama server"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Users\\infom\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe"
+    },
+    "phoneexperiencehost": {
+      "name": "phoneexperiencehost",
+      "aliases": [
+        "phoneexperiencehost"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15",
+      "target": "C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26042.95.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe"
+    },
+    "chxsmartscreen": {
+      "name": "chxsmartscreen",
+      "aliases": [
+        "chxsmartscreen"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-08T21:16:41"
+    },
+    "google": {
+      "name": "Google",
+      "aliases": [
+        "google"
+      ],
+      "target": "shell:AppsFolder\\WGA_21hpf16v5xp10!WGA",
+      "source": "start_apps",
+      "last_seen": "2026-06-13T14:59:15"
+    },
+    "taskmgr": {
+      "name": "taskmgr",
+      "aliases": [
+        "taskmgr"
+      ],
+      "source": "running_process",
+      "last_seen": "2026-06-13T14:59:15"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# Runtime files
+*.lock
+
+# Runtime memory
+memory.json
+episodic_memory.json
+
+# Virtual envs
+venv/
+.venv/

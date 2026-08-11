@@ -8,7 +8,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from urllib import error, request
 
+from ai.gemini_provider import DEFAULT_GEMINI_CONFIG, check_gemini_connection, warmup_gemini_model
 from ai.models import DEFAULT_OLLAMA_CONFIG
+from ai.provider import get_ai_provider
 from ai.qwen_brain import check_ollama_connection, plan_with_qwen, warmup_qwen_model
 from audio.runtime import get_pipeline
 from tools.common import structured_result
@@ -104,6 +106,13 @@ def _memory_snapshot() -> Dict[str, Any]:
     }
 
 
+def _gemini_status_message() -> str:
+    return (
+        "Gemini provider selected. Ollama-specific diagnostics are not applicable. "
+        "Use ai_health_check to validate Gemini API key and planner warmup."
+    )
+
+
 def _loaded_models() -> List[Dict[str, Any]]:
     ok, data, _, _ = _ollama_call("/api/ps", timeout=10)
     if not ok:
@@ -169,8 +178,19 @@ def _recommendations(memory: Dict[str, Any], loaded: List[str], planner: Dict[st
 
 def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
     started = time.perf_counter()
+    provider = get_ai_provider()
 
     if tool == "ollama_status":
+        if provider == "gemini":
+            return structured_result(
+                True,
+                tool,
+                _gemini_status_message(),
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                planner_model=DEFAULT_GEMINI_CONFIG.planner_model,
+                live_model=DEFAULT_GEMINI_CONFIG.live_model,
+            )
         _log("DIAGNOSTICS", "running ollama_status")
         ok_tags, tags, latency, err = _ollama_call("/api/tags", timeout=10)
         ok_ps, ps, ps_latency, ps_err = _ollama_call("/api/ps", timeout=10)
@@ -196,6 +216,20 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if tool == "model_status":
+        if provider == "gemini":
+            conn = check_gemini_connection()
+            warm = warmup_gemini_model(timeout=30)
+            ok = bool(conn.get("ok")) and bool(warm.get("ok"))
+            return structured_result(
+                ok,
+                tool,
+                "Gemini model status checked" if ok else "Gemini model status failed",
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                planner_model=DEFAULT_GEMINI_CONFIG.planner_model,
+                live_model=DEFAULT_GEMINI_CONFIG.live_model,
+                warmup=warm,
+            )
         _log("DIAGNOSTICS", "running model_status")
         ok, tags, latency, err = _ollama_call("/api/tags", timeout=12)
         available = [str(m.get("name", "")) for m in (tags.get("models", []) if ok else []) if isinstance(m, dict)]
@@ -275,6 +309,22 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if tool == "ai_health_check":
+        if provider == "gemini":
+            _log("AI HEALTH", "running gemini ai_health_check")
+            conn = check_gemini_connection()
+            warm = warmup_gemini_model(timeout=30)
+            ai_ok = bool(conn.get("ok")) and bool(warm.get("ok"))
+            return structured_result(
+                ai_ok,
+                tool,
+                "Gemini health check complete" if ai_ok else "Gemini health check found failures",
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                planner_model=DEFAULT_GEMINI_CONFIG.planner_model,
+                live_model=DEFAULT_GEMINI_CONFIG.live_model,
+                api_key_configured=bool(DEFAULT_GEMINI_CONFIG.api_key),
+                warmup=warm,
+            )
         _log("AI HEALTH", "running ai_health_check")
         conn = check_ollama_connection(timeout=8)
         model = execute("model_status", {})
@@ -478,6 +528,15 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if tool == "unload_models":
+        if provider == "gemini":
+            return structured_result(
+                True,
+                tool,
+                "Gemini provider does not keep local models loaded",
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                unloaded_models=[],
+            )
         _log("RECOVERY", "unloading inactive models")
         loaded = _loaded_models()
         unloaded: List[str] = []
@@ -501,6 +560,17 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if tool == "reload_models":
+        if provider == "gemini":
+            warm = warmup_gemini_model(timeout=30)
+            return structured_result(
+                bool(warm.get("ok")),
+                tool,
+                "Gemini planner warmup complete" if warm.get("ok") else "Gemini planner warmup failed",
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                planner_model=DEFAULT_GEMINI_CONFIG.planner_model,
+                warmup=warm,
+            )
         _log("RECOVERY", "reloading planner model")
         warm = warmup_qwen_model(timeout=90)
         ok = bool(warm.get("ok"))
@@ -514,6 +584,23 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if tool == "recover_ai":
+        if provider == "gemini":
+            conn = check_gemini_connection()
+            warm = warmup_gemini_model(timeout=30)
+            ok = bool(conn.get("ok")) and bool(warm.get("ok"))
+            state = _read_state()
+            state["safe_mode"] = False
+            _write_state(state)
+            return structured_result(
+                ok,
+                tool,
+                "Gemini recovery completed" if ok else "Gemini recovery incomplete",
+                duration=time.perf_counter() - started,
+                provider="gemini",
+                ollama_connection=None,
+                reload=warm,
+                ai_state_cleared=True,
+            )
         _log("RECOVERY", "recover_ai started")
         unload = execute("unload_models", {})
         conn = check_ollama_connection(timeout=8)

@@ -2,8 +2,18 @@
   "exact_commands": {
     "stop_alarm": ["stop alarm", "stop timer", "stop ringing", "dismiss alarm"],
     "greeting": ["", "hello", "hi", "hey"],
+    "thanks": ["thank you", "thanks"],
     "voice_test": ["voice test", "test voice", "speak test", "test speech"],
     "voice_status": ["voice status", "speech status", "why no voice"],
+    "play_spotify": ["play spotify"],
+    "pause_media": ["pause music"],
+    "resume_media": ["resume music"],
+    "next_track": ["next song"],
+    "previous_track": ["previous song"],
+    "mute_volume_exact": ["mute"],
+    "unmute_volume_exact": ["unmute"],
+    "volume_up": ["volume up"],
+    "volume_down": ["volume down"],
     "list_cached_apps": [
       "list cached apps",
       "cached apps",

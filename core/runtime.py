@@ -10,13 +10,20 @@ IS_SPEAKING = False
 AUDIO_PIPELINE = None
 DEBUG_AI_PIPELINE = True
 AI_PLANNER_AVAILABLE = False
+AI_PLANNER_STATUS = {"available": False, "provider": "unknown", "reason": "not_initialized"}
 AI_STARTUP_TIMEOUT_SECONDS = 90
 AI_RUNTIME_TIMEOUT_SECONDS = 90
 DIAGNOSTICS_STATE_FILE = Path("diagnostics_state.json").resolve()
 POST_SPEECH_COOLDOWN_S = float(os.getenv("JARVIS_POST_SPEECH_COOLDOWN_S", "1.5"))
+LAST_SPOKEN_TEXT = ""
 
 last_heard_time = 0
 input_suppressed_until = 0.0
+
+
+def set_speaking(is_speaking: bool) -> None:
+    global IS_SPEAKING
+    IS_SPEAKING = bool(is_speaking)
 
 
 def suppress_input(extra_seconds: float | None = None) -> None:
@@ -29,21 +36,26 @@ def input_is_suppressed() -> bool:
     return IS_SPEAKING or time.time() < input_suppressed_until
 
 
+def cooldown_is_active() -> bool:
+    return time.time() < input_suppressed_until
+
+
 def wait_for_listen_ready(poll_s: float = 0.1) -> None:
     while input_is_suppressed():
         time.sleep(poll_s)
 
 
 def speak(text):
-    global IS_SPEAKING
+    global LAST_SPOKEN_TEXT
     print("Jarvis:", text)
-    IS_SPEAKING = True
+    LAST_SPOKEN_TEXT = str(text or "").strip().lower()
+    set_speaking(True)
     try:
         mouth.speak(text)
     except Exception:
         print("VOICE ERROR: Jarvis could not speak this response")
     finally:
-        IS_SPEAKING = False
+        set_speaking(False)
         suppress_input()
 
 

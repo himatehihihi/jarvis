@@ -34,6 +34,9 @@ TOOL_REGISTRY: Dict[str, ToolSpec] = {
     "lock_pc": _spec("lock_pc", "system", "lock workstation"),
     "set_volume": _spec("set_volume", "system", "set system volume", {"level": {"type": "integer", "required": True, "min": 0, "max": 100}}),
     "mute_volume": _spec("mute_volume", "system", "toggle mute"),
+    "set_mute": _spec("set_mute", "system", "set system mute state", {"muted": {"type": "boolean", "required": True}}),
+    "volume_up": _spec("volume_up", "system", "increase system volume", {"steps": {"type": "integer", "required": False, "min": 1, "max": 50}}),
+    "volume_down": _spec("volume_down", "system", "decrease system volume", {"steps": {"type": "integer", "required": False, "min": 1, "max": 50}}),
     "brightness_up": _spec("brightness_up", "system", "increase brightness"),
     "brightness_down": _spec("brightness_down", "system", "decrease brightness"),
 

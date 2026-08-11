@@ -55,6 +55,11 @@ def handle_greeting_intent(intent):
     return True
 
 
+def handle_thanks_intent(intent):
+    speak("You're welcome")
+    return True
+
+
 def handle_voice_test_intent(intent):
     speak("This is Jarvis speaking")
     return True
@@ -205,6 +210,15 @@ def run_diagnostic_tool(tool_name):
     return result
 
 
+def run_tool(tool_name, params=None):
+    result = execute_tool(tool_name, params or {})
+    if result.get("success"):
+        speak(result.get("message", "Done"))
+    else:
+        speak(result.get("error", f"{tool_name} failed"))
+    return result
+
+
 def handle_run_diagnostics_intent(intent):
     result = run_diagnostic_tool("run_full_diagnostics")
     recommendations = result.get("recommendations", []) if isinstance(result, dict) else []
@@ -240,6 +254,42 @@ def handle_check_memory_intent(intent):
     return result
 
 
+def handle_play_spotify_intent(intent):
+    return run_tool("open_app", {"app_name": "spotify"})
+
+
+def handle_pause_media_intent(intent):
+    return run_tool("pause_media")
+
+
+def handle_resume_media_intent(intent):
+    return run_tool("resume_media")
+
+
+def handle_next_track_intent(intent):
+    return run_tool("next_track")
+
+
+def handle_previous_track_intent(intent):
+    return run_tool("previous_track")
+
+
+def handle_mute_volume_intent(intent):
+    return run_tool("set_mute", {"muted": True})
+
+
+def handle_unmute_volume_intent(intent):
+    return run_tool("set_mute", {"muted": False})
+
+
+def handle_volume_up_intent(intent):
+    return run_tool("volume_up", {"steps": 5})
+
+
+def handle_volume_down_intent(intent):
+    return run_tool("volume_down", {"steps": 5})
+
+
 def get_executor():
     global EXECUTOR
     if EXECUTOR is None:
@@ -248,8 +298,18 @@ def get_executor():
             handlers={
                 "stop_alarm": handle_stop_alarm_intent,
                 "greeting": handle_greeting_intent,
+                "thanks": handle_thanks_intent,
                 "voice_test": handle_voice_test_intent,
                 "voice_status": handle_voice_status_intent,
+                "play_spotify": handle_play_spotify_intent,
+                "pause_media": handle_pause_media_intent,
+                "resume_media": handle_resume_media_intent,
+                "next_track": handle_next_track_intent,
+                "previous_track": handle_previous_track_intent,
+                "mute_volume_exact": handle_mute_volume_intent,
+                "unmute_volume_exact": handle_unmute_volume_intent,
+                "volume_up": handle_volume_up_intent,
+                "volume_down": handle_volume_down_intent,
                 "list_cached_apps": handle_list_cached_apps_intent,
                 "list_whatsapp_contacts": handle_list_whatsapp_contacts_intent,
                 "list_open_apps": handle_list_open_apps_intent,

@@ -29,6 +29,9 @@ Rules:
 
 Return exactly:
 {"domain":"<domain>","tool":"<tool_name>","parameters":{...}}
+
+For non-action chat, use:
+{"domain":"direct","tool":"respond_directly","parameters":{"response":"<short response>"}}
 """.strip()
 
 
@@ -60,6 +63,7 @@ def _normalize_plan(payload: Dict[str, Any]) -> Dict[str, Any]:
         "domain": domain,
         "tool": tool,
         "parameters": parameters,
+        "response": str(payload.get("response", "") or parameters.get("response", "")).strip(),
         "safe_to_execute": False,
     }
 

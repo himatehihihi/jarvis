@@ -36,6 +36,7 @@ APP_ALIASES = {
 }
 
 APP_CACHE_FILE = "apps_cache.json"
+APP_PROCESS_DETECTION_TIMEOUT = max(0.5, float(os.getenv("JARVIS_APP_PROCESS_DETECTION_TIMEOUT", "6.0")))
 
 
 def normalize_app_key(name):
@@ -367,6 +368,27 @@ def try_start(target):
     return False
 
 
+def _launch_candidates(app_name, target):
+    candidates = {normalize_app_key(app_name)}
+    target_text = str(target or "").strip()
+    if target_text.lower().endswith(".exe"):
+        candidates.add(normalize_app_key(os.path.basename(target_text)))
+    return {item for item in candidates if item}
+
+
+def _verify_launch(app_name, target, timeout=3.0):
+    candidates = _launch_candidates(app_name, target)
+    if not candidates:
+        return False
+    deadline = time.time() + max(timeout, APP_PROCESS_DETECTION_TIMEOUT)
+    while time.time() < deadline:
+        running = running_process_names()
+        if any(candidate in running for candidate in candidates):
+            return True
+        time.sleep(0.2)
+    return False
+
+
 def open_app(app_name):
     app_name = clean_app_name(app_name)
     if not app_name:
@@ -374,19 +396,21 @@ def open_app(app_name):
         return False
 
     if app_name in ["whatsapp", "whats app"] and open_from_start_search("whatsapp"):
-        record_app_open("whatsapp", None)
-        print("Jarvis: Opening whatsapp from Start search...")
-        return True
+        if _verify_launch("whatsapp", "whatsapp"):
+            record_app_open("whatsapp", None)
+            print("Jarvis: Opening whatsapp from Start search...")
+            return True
+        return False
 
     if app_name in APP_ALIASES:
         for target in APP_ALIASES[app_name]:
-            if try_start(target):
+            if try_start(target) and _verify_launch(app_name, target):
                 record_app_open(app_name, target)
                 print(f"Jarvis: Opening {app_name}...")
                 return True
 
     cached_app = find_cached_app(app_name)
-    if cached_app and cached_app.get("target") and try_start(cached_app["target"]):
+    if cached_app and cached_app.get("target") and try_start(cached_app["target"]) and _verify_launch(cached_app.get("name", app_name), cached_app["target"]):
         record_app_open(cached_app.get("name", app_name), cached_app["target"])
         print(f"Jarvis: Opening {cached_app.get('name', app_name)}...")
         return True
@@ -401,9 +425,11 @@ def open_app(app_name):
         for app in cache["apps"].values()
     )
     if cached_without_target and open_from_start_search(app_name):
-        record_app_open(app_name, None)
-        print(f"Jarvis: Opening {app_name} from Start search...")
-        return True
+        if _verify_launch(app_name, app_name):
+            record_app_open(app_name, None)
+            print(f"Jarvis: Opening {app_name} from Start search...")
+            return True
+        return False
 
     print(f"Jarvis: I could not find {app_name} in the app cache.")
     return False

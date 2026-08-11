@@ -10,7 +10,7 @@ import numpy as np
 
 from . import DEFAULT_AUDIO_CONFIG, AudioConfig
 from .audio_buffer import RollingAudioBuffer
-from .cleanup import clean_transcript, is_echo_transcript
+from .cleanup import clean_transcript, is_echo_transcript, is_similar_transcript
 from .microphone import MicrophoneStream
 from .transcriber import FasterWhisperTranscriber
 from .vad import SileroVADDetector
@@ -124,6 +124,8 @@ class AudioPipeline:
             frame = self.microphone.read(timeout=0.25)
             if frame is None:
                 continue
+            if self._input_suppressed():
+                continue
             now = time.time()
             self.buffer.push(frame)
 
@@ -178,9 +180,12 @@ class AudioPipeline:
                     audio = self.buffer.finalize_capture()
                     wake_latency = (time.time() - self._wake_armed_at) * 1000.0
                     self.last_wake_latency_ms = wake_latency
-                    self._set_state(AssistantState.TRANSCRIBING)
-                    print("[AUDIO] transcribing...")
-                    self._queue_capture(audio)
+                    if self.command_speech_seen:
+                        self._set_state(AssistantState.TRANSCRIBING)
+                        print("[AUDIO] transcribing...")
+                        self._queue_capture(audio)
+                    else:
+                        self._set_state(AssistantState.PASSIVE_LISTENING)
                     self.command_end_pending = False
                 continue
 
@@ -222,6 +227,15 @@ class AudioPipeline:
                 text, latency = self.transcriber.transcribe(audio)
                 cleaned = clean_transcript(text, wake_word=self.config.wakeword_model_hint)
                 self._push_event({"type": "transcript", "raw": text, "cleaned": cleaned, "latency_s": round(latency, 3)})
+                if cleaned and not is_echo_transcript(cleaned):
+                    try:
+                        from core import runtime
+
+                        if is_similar_transcript(cleaned, runtime.LAST_SPOKEN_TEXT):
+                            print(f"[AUDIO DEBUG] stt_skip reason=similar_to_tts text={cleaned!r}")
+                            cleaned = ""
+                    except Exception:
+                        pass
                 if cleaned and not is_echo_transcript(cleaned):
                     print(f"[AUDIO] command recognized={cleaned}")
                     try:

@@ -13,10 +13,21 @@ from ..common import not_implemented, structured_result
 
 
 _ROOT = Path.cwd().resolve()
+_LAST_MUTED_STATE: bool | None = None
 
 
 def _safe_resolve(path: str) -> Path:
     return Path(path).expanduser().resolve()
+
+
+def _set_mute(muted: bool) -> bool:
+    global _LAST_MUTED_STATE
+    if _LAST_MUTED_STATE is muted:
+        return True
+    ok = hands.press_key_command("volumemute")
+    if ok:
+        _LAST_MUTED_STATE = muted
+    return ok
 
 
 def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
@@ -49,6 +60,18 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
     if tool == "mute_volume":
         ok = hands.press_key_command("volumemute")
         return structured_result(ok, tool, "Toggled mute" if ok else "Failed to toggle mute")
+    if tool == "set_mute":
+        muted = bool(params.get("muted", False))
+        ok = _set_mute(muted)
+        return structured_result(ok, tool, "Muted volume" if muted and ok else "Unmuted volume" if ok else "Failed to change mute state", muted=muted)
+    if tool == "volume_up":
+        steps = int(params.get("steps", 5))
+        ok = all(hands.press_key_command("volumeup") for _ in range(max(1, min(50, steps))))
+        return structured_result(ok, tool, "Increased volume" if ok else "Failed to increase volume", steps=steps)
+    if tool == "volume_down":
+        steps = int(params.get("steps", 5))
+        ok = all(hands.press_key_command("volumedown") for _ in range(max(1, min(50, steps))))
+        return structured_result(ok, tool, "Decreased volume" if ok else "Failed to decrease volume", steps=steps)
     if tool in {"brightness_up", "brightness_down"}:
         return not_implemented(tool, "Brightness control provider not configured yet")
     if tool == "open_project":

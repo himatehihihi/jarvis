@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from difflib import SequenceMatcher
 
 
 FILLER_WORDS = {
@@ -43,6 +44,16 @@ def is_echo_transcript(text: str) -> bool:
     if len(words) <= 1 and len(value) < 4:
         return True
     return False
+
+
+def is_similar_transcript(text: str, reference: str, threshold: float = 0.88) -> bool:
+    value = clean_transcript(text)
+    target = clean_transcript(reference)
+    if not value or not target:
+        return False
+    if value == target:
+        return True
+    return SequenceMatcher(None, value, target).ratio() >= threshold
 
 
 def clean_transcript(text: str, wake_word: str = "jarvis") -> str:

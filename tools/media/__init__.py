@@ -14,16 +14,16 @@ def execute(tool: str, params: Dict[str, Any]) -> Dict[str, Any]:
         ok = hands.play_song(q, p)
         return structured_result(ok, tool, f"Playing {q}" if ok else "Failed to play media", platform=p)
     if tool == "pause_media":
-        ok = hands.press_key_command("play/pause")
+        ok = hands.press_key_command("playpause")
         return structured_result(ok, tool, "Paused media" if ok else "Failed to pause media")
     if tool == "resume_media":
-        ok = hands.press_key_command("play/pause")
+        ok = hands.press_key_command("playpause")
         return structured_result(ok, tool, "Resumed media" if ok else "Failed to resume media")
     if tool == "next_track":
-        ok = hands.press_key_command("media next")
+        ok = hands.press_key_command("nexttrack")
         return structured_result(ok, tool, "Skipped to next track" if ok else "Failed to skip track")
     if tool == "previous_track":
-        ok = hands.press_key_command("media previous")
+        ok = hands.press_key_command("prevtrack")
         return structured_result(ok, tool, "Moved to previous track" if ok else "Failed previous track")
     if tool == "play_playlist":
         q = str(params.get("query", "")).strip()

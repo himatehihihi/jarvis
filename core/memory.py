@@ -548,6 +548,8 @@ def add_episode(user_command, planner_output, execution_result):
         command = _safe_string(user_command, limit=200)
         if not command:
             return
+        if not isinstance(execution_result, dict) or not execution_result.get("success"):
+            return
         episode = _normalize_episode({
             "user_command": command,
             "planner_output": planner_output if isinstance(planner_output, dict) else {},

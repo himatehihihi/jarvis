@@ -43,6 +43,7 @@ class IntentExecutor:
         if not handler:
             self.speak("I heard you, but I do not know that command yet")
             return False
+        print(f"[DEBUG] selected_handler={intent.get('intent')}")
         return handler(intent)
 
     def do_action(self, action, intent_name="", payload=None):

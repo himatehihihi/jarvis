@@ -3,9 +3,9 @@ import sys
 import time
 
 from audio.cleanup import is_echo_transcript
-from audio.pipeline import AudioPipeline
 from audio.runtime import set_pipeline
-from ai.qwen_brain import check_ollama_connection, plan_with_qwen, warmup_qwen_model
+from audio.voice_controller import VoiceSystemController
+from ai.provider import check_planner_connection, get_ai_provider, plan_command, provider_summary, warmup_planner_backend
 from core import runtime
 from core.memory import add_episode, summarize_recent_episodes
 from handlers.intents import get_executor
@@ -14,8 +14,8 @@ from tools.domain_router import route_plan
 from tools.executor_router import execute_tool
 from tools.tool_validator import canonicalize_planner_output, validate_planner_output
 
-MUTE_COMMANDS = {"mute", "mute yourself", "stop listening"}
-UNMUTE_COMMANDS = {"unmute", "wake up", "start listening"}
+MUTE_COMMANDS = {"mute yourself", "stop listening"}
+UNMUTE_COMMANDS = {"wake up", "start listening"}
 JARVIS_MUTED = False
 
 
@@ -51,7 +51,7 @@ def _is_unmute_command(command):
 def run_ai_planner_pipeline(command, confirmed=False, execute=True):
     episodic_summary = summarize_recent_episodes(limit=5, max_chars=700)
     debug_log("episodic_summary", {"characters": len(episodic_summary), "summary": episodic_summary})
-    planner_output = plan_with_qwen(
+    planner_output = plan_command(
         command,
         timeout=runtime.AI_RUNTIME_TIMEOUT_SECONDS,
         episodic_summary=episodic_summary,
@@ -70,6 +70,21 @@ def run_ai_planner_pipeline(command, confirmed=False, execute=True):
     if not selected_tool:
         selected_tool = canonical_plan.get("tool")
     debug_log("selected_tool", {"tool": selected_tool})
+
+    if selected_tool == "respond_directly":
+        response = str(canonical_plan.get("response") or (canonical_plan.get("parameters") or {}).get("response") or "").strip()
+        if not response:
+            response = "Okay."
+        if execute:
+            runtime.speak(response)
+            return {"success": True, "message": response, "tool": "respond_directly"}
+        return {
+            "ok": True,
+            "planner_output": planner_output,
+            "routed_plan": canonical_plan,
+            "validation": {"ok": True, "respond_directly": True},
+            "executor_payload": None,
+        }
 
     validation = validate_planner_output(canonical_plan, confirmed=confirmed)
     debug_log("validation_result", validation.to_dict())
@@ -133,6 +148,7 @@ def execute_command(command):
         return False
 
     deterministic_intent = parse_intent(command)
+    print(f"[DEBUG] parsed_intent={json.dumps(deterministic_intent, ensure_ascii=True)}")
     if deterministic_intent.get("intent") != "unknown":
         if runtime.AUDIO_PIPELINE is not None:
             runtime.AUDIO_PIPELINE.mark_executing()
@@ -178,43 +194,59 @@ def command_from_heard_text(text):
 
 
 def initialize_ai_planner():
-    print("[AI STARTUP] checking Ollama connection")
-    connection = check_ollama_connection(timeout=8)
-    print(f"[AI STARTUP] connection: {connection}")
+    provider = get_ai_provider()
+    print(f"[AI STARTUP] provider={provider}")
+    print(f"[AI STARTUP] provider_summary={provider_summary()}")
+    connection = check_planner_connection(timeout=8)
+    print(f"[AI STARTUP] planner_connection={connection}")
     if not connection.get("ok"):
-        print("[AI STARTUP] Warning: AI planner failed to start (connection check failed)")
+        runtime.AI_PLANNER_STATUS = {
+            "available": False,
+            "provider": provider,
+            "reason": "planner_connection_failed",
+            "details": connection,
+        }
         runtime.AI_PLANNER_AVAILABLE = False
+        print("[AI STARTUP] planner=unavailable reason=planner_connection_failed")
         return False
 
-    print(f"[AI STARTUP] warming model qwen2.5-coder:7b (timeout={runtime.AI_STARTUP_TIMEOUT_SECONDS}s)")
-    warmup = warmup_qwen_model(timeout=runtime.AI_STARTUP_TIMEOUT_SECONDS)
-    print(f"[AI STARTUP] warmup: {warmup}")
+    print(f"[AI STARTUP] warming planner provider={provider} (timeout={runtime.AI_STARTUP_TIMEOUT_SECONDS}s)")
+    warmup = warmup_planner_backend(timeout=runtime.AI_STARTUP_TIMEOUT_SECONDS)
+    print(f"[AI STARTUP] planner_warmup={warmup}")
     if not warmup.get("ok"):
-        print("[AI STARTUP] Warning: AI planner failed to start")
+        runtime.AI_PLANNER_STATUS = {
+            "available": False,
+            "provider": provider,
+            "reason": "planner_warmup_failed",
+            "details": warmup,
+        }
         runtime.AI_PLANNER_AVAILABLE = False
+        print("[AI STARTUP] planner=unavailable reason=planner_warmup_failed")
         return False
 
     runtime.AI_PLANNER_AVAILABLE = True
-    runtime.speak("Jarvis AI online")
+    runtime.AI_PLANNER_STATUS = {
+        "available": True,
+        "provider": provider,
+        "reason": "ready",
+        "details": warmup,
+    }
+    print("[AI STARTUP] planner=available reason=ready")
     return True
 
 
 def initialize_audio_pipeline():
-    runtime.AUDIO_PIPELINE = AudioPipeline()
+    runtime.AUDIO_PIPELINE = VoiceSystemController()
     set_pipeline(runtime.AUDIO_PIPELINE)
     status = runtime.AUDIO_PIPELINE.startup_validate()
     print(f"[AUDIO STARTUP] validation={status}")
-    if not status.get("microphone"):
-        print("[AUDIO STARTUP] microphone unavailable")
-    if not status.get("wakeword"):
-        print("[AUDIO STARTUP] wakeword model unavailable")
-    if not status.get("vad"):
-        print("[AUDIO STARTUP] VAD model unavailable")
-    if not status.get("whisper"):
-        print("[AUDIO STARTUP] whisper model unavailable")
     try:
         runtime.AUDIO_PIPELINE.start()
-        print("[AUDIO STARTUP] pipeline running")
+        diag = runtime.AUDIO_PIPELINE.diagnostics()
+        print(
+            f"[AUDIO STARTUP] voice_system_running mode={diag.get('voice_mode')} "
+            f"live={diag.get('live_status')} planner={'available' if runtime.AI_PLANNER_AVAILABLE else 'unavailable'}"
+        )
         return True
     except Exception as exc:
         print(f"[AUDIO STARTUP] pipeline failed: {exc}")
@@ -247,8 +279,7 @@ def run_audio_test_mode():
 def main():
     runtime.speak("Jarvis online")
     initialize_audio_pipeline()
-    if not initialize_ai_planner():
-        runtime.speak("Warning: AI planner failed to start")
+    initialize_ai_planner()
 
     while True:
         try:

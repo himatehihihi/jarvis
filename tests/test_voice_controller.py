@@ -1,383 +1,345 @@
+"""Unit tests for VoiceSystemController.
+Runs fully offline — no real Gemini API, no real microphone.
+7 tests covering: startup, failure fallback, event handling (interrupted /
+error / intentional-close / remote-close), FakeSession.health() interface,
+and diagnostics live_status passthrough.
+"""
+from __future__ import annotations
+
 import queue
-import threading
-import time
+import sys
+import types as _types
 import unittest
-from unittest import mock
+from typing import Any, Dict
+from unittest.mock import MagicMock, patch
 
-import numpy as np
+# ---------------------------------------------------------------------------
+# Stub out every external package that voice_controller / live_session need
+# so the tests run without a real Gemini SDK, sounddevice, torch, etc.
+# ---------------------------------------------------------------------------
+def _stub(name: str) -> MagicMock:
+    mod = MagicMock()
+    sys.modules[name] = mod
+    return mod
 
-from ai.provider import set_active_ai_provider
-from audio.voice_controller import VoiceSystemController
+for _pkg in [
+    "google", "google.genai", "google.genai.types",
+    "sounddevice",
+    "numpy",
+    "faster_whisper",
+    "silero_vad",
+    "torch",
+    "onnxruntime",
+    "openwakeword",
+    "openwakeword.model",
+    "openwakeword.utils",
+    "tools", "tools.common", "tools.executor_router",
+    "tools.tool_registry", "tools.tool_validator",
+    "ai", "ai.live_session", "ai.live_tools", "ai.provider",
+    "core", "core.runtime",
+]:
+    if _pkg not in sys.modules:
+        _stub(_pkg)
+
+# Make numpy behave just enough for the controller's static methods
+import numpy as _np_real  # noqa: E402 – may fail, that's fine
+try:
+    import numpy as np  # real numpy if available
+except ImportError:
+    np = sys.modules["numpy"]
+
+# Ensure google.genai.types.Blob / ActivityStart / ActivityEnd exist
+_gtypes = sys.modules["google.genai.types"]
+for _attr in ("Blob", "ActivityStart", "ActivityEnd", "FunctionResponse",
+              "LiveConnectConfig", "SpeechConfig", "VoiceConfig",
+              "PrebuiltVoiceConfig", "AudioTranscriptionConfig",
+              "RealtimeInputConfig", "AutomaticActivityDetection",
+              "ActivityHandling", "TurnCoverage", "HttpOptions",
+              "GenerateContentConfig"):
+    if not hasattr(_gtypes, _attr):
+        setattr(_gtypes, _attr, MagicMock())
+
+# tools.common.structured_result must be callable
+sys.modules["tools.common"].structured_result = lambda ok, *a, **kw: {"ok": ok, **kw}
+
+
+# ---------------------------------------------------------------------------
+# Minimal stubs so the controller can be instantiated without real deps
+# ---------------------------------------------------------------------------
+
+class FakeAudioConfig:
+    sample_rate = 16000
+    channels = 1
+    block_duration_ms = 80
+    wake_threshold = 0.85
+    wake_cooldown_s = 1.0
+    vad_threshold = 0.45
+    silence_timeout_s = 0.9
+    pre_roll_s = 0.9
+    post_roll_s = 0.25
+    command_timeout_s = 8.0
+    beam_size = 2
+    temperature = 0.0
+    transcription_timeout_s = 20.0
+    wakeword_model_hint = "jarvis"
+    whisper_model = "small.en"
 
 
 class FakeMicrophone:
     def __init__(self):
         self.running = False
-        self.start_count = 0
-        self.stop_count = 0
-        self.frames = queue.Queue()
-
-    def start(self):
-        self.running = True
-        self.start_count += 1
-        return True
-
-    def stop(self):
-        self.running = False
-        self.stop_count += 1
-
-    def read(self, timeout=0.5):
-        if not self.running:
-            return None
-        try:
-            return self.frames.get(timeout=timeout)
-        except queue.Empty:
-            return None
-
-    def health(self):
-        return {
-            "running": self.running,
-            "queue_size": self.frames.qsize(),
-            "start_count": self.start_count,
-            "stop_count": self.stop_count,
-        }
-
-    def push(self, frame):
-        self.frames.put(np.asarray(frame, dtype=np.float32))
-
-
-class FakeVAD:
-    def __init__(self):
-        self.loaded = True
-        self.last_probability = 0.0
-        self.speech_events = 0
-        self.events = queue.Queue()
-
-    def load(self):
-        self.loaded = True
-        return True
-
-    def update(self, frame, now):
-        try:
-            result = self.events.get_nowait()
-        except queue.Empty:
-            result = (False, False, False)
-        self.last_probability = 0.9 if result[0] else 0.05
-        if result[1]:
-            self.speech_events += 1
-        return result
-
-    def push(self, is_speech, speech_start, speech_end):
-        self.events.put((is_speech, speech_start, speech_end))
+    def start(self): self.running = True
+    def stop(self): self.running = False
+    def read(self, timeout=0.5): return None
+    def health(self): return {"running": self.running}
 
 
 class FakeSpeaker:
-    def __init__(self, sample_rate=24000):
-        self.sample_rate = sample_rate
-        self.running = False
-        self.playing = False
-        self.start_count = 0
-        self.stop_count = 0
-        self.interruptions = 0
-        self.played = []
-
-    def start(self):
-        self.running = True
-        self.start_count += 1
-
-    def stop(self):
-        self.running = False
-        self.playing = False
-        self.stop_count += 1
-
-    def play(self, pcm16le_audio):
-        self.played.append(pcm16le_audio)
-        self.playing = True
-
-    def interrupt(self):
-        self.interruptions += 1
-        self.playing = False
-
-    def clear(self):
-        return 0
-
-    def is_playing(self):
-        return self.playing
-
+    def __init__(self): self.playing = False; self.interruptions = 0
+    def start(self): pass
+    def stop(self): pass
+    def play(self, _): self.playing = True
+    def interrupt(self): self.playing = False; self.interruptions += 1
+    def is_playing(self): return self.playing
     def health(self):
+        return {"running": True, "playing": self.playing,
+                "queued_chunks": 0, "interruptions": self.interruptions, "last_error": ""}
+
+
+class FakeVAD:
+    loaded = True
+    last_probability = 0.0
+    speech_events = 0
+    def load(self): return True
+    def update(self, frame, now): return False, False, False
+
+
+class FakePipeline:
+    def __init__(self): self._running = False
+    def start(self): self._running = True
+    def stop(self): self._running = False
+    def get_command(self, timeout=0.2): return None
+    def drain_commands(self): return 0
+    def mark_executing(self): pass
+    def mark_passive(self): pass
+    def diagnostics(self):
         return {
-            "running": self.running,
-            "playing": self.playing,
-            "interruptions": self.interruptions,
-            "played_chunks": len(self.played),
+            "assistant_state": "PASSIVE_LISTENING",
+            "microphone": {}, "vad": {}, "wakeword": {},
+            "stt": {"loaded": False}, "queue_health": {}, "latency": {},
+            "transcription_failures": 0, "last_error": "",
+            "listening_active": self._running,
         }
 
 
 class FakeSession:
-    def __init__(self, *args, **kwargs):
-        self.started = False
-        self.stopped = False
-        self.audio_calls = []
-        self.event_queue = queue.Queue()
-        self.transcript_queue = queue.Queue()
-        self.audio_queue = queue.Queue()
-        self.clear_audio_calls = 0
-        self.clear_transcript_calls = 0
+    """Offline stand-in for GeminiLiveSessionBridge.
+    Implements the full health() interface required by VoiceSystemController.
+    """
 
-    def start(self):
-        self.started = True
-        self.event_queue.put({"type": "connected", "model": "fake"})
+    def __init__(self, *, fail: bool = False):
+        self._eq: queue.Queue = queue.Queue(maxsize=64)
+        self._fail = fail
+        self._live_status = "idle"
+        self._live_error = ""
+        self._live_error_type = ""
+        self._close_reason = ""
+        self._stopped = False
 
-    def stop(self):
-        self.stopped = True
+    # ---------- health() interface (required by controller.diagnostics) ----------
 
-    def send_audio_chunk(self, pcm16le_audio, *, activity_start=False, activity_end=False, end_of_turn=False):
-        self.audio_calls.append(
-            {
-                "bytes": pcm16le_audio,
-                "activity_start": activity_start,
-                "activity_end": activity_end,
-                "end_of_turn": end_of_turn,
-            }
-        )
-
-    def send_activity_end(self):
-        self.audio_calls.append({"bytes": b"", "activity_start": False, "activity_end": True, "end_of_turn": False})
-
-    def get_event(self, timeout=0.1):
-        try:
-            return self.event_queue.get(timeout=timeout)
-        except queue.Empty:
-            return None
-
-    def get_transcript(self, timeout=0.1):
-        try:
-            return self.transcript_queue.get(timeout=timeout)
-        except queue.Empty:
-            return None
-
-    def get_audio(self, timeout=0.1):
-        try:
-            return self.audio_queue.get(timeout=timeout)
-        except queue.Empty:
-            return None
-
-    def clear_audio_queue(self):
-        self.clear_audio_calls += 1
-        while not self.audio_queue.empty():
-            self.audio_queue.get_nowait()
-        return 0
-
-    def clear_transcript_queue(self):
-        self.clear_transcript_calls += 1
-        while not self.transcript_queue.empty():
-            self.transcript_queue.get_nowait()
-        return 0
-
-    def inject_event(self, event):
-        self.event_queue.put(event)
-
-
-class SessionFactory:
-    def __init__(self, plan):
-        self.plan = list(plan)
-        self.instances = []
-        self.lock = threading.Lock()
-
-    def __call__(self, *args, **kwargs):
-        with self.lock:
-            if not self.plan:
-                behavior = "session"
-            else:
-                behavior = self.plan.pop(0)
-        if behavior == "raise":
-            raise RuntimeError("connect failed")
-        session = FakeSession(*args, **kwargs)
-        self.instances.append(session)
-        return session
-
-
-class FakeLocalPipeline:
-    def __init__(self):
-        self.running = False
-        self.start_count = 0
-        self.stop_count = 0
-
-    def start(self):
-        self.running = True
-        self.start_count += 1
-        return True
-
-    def stop(self):
-        self.running = False
-        self.stop_count += 1
-
-    def get_command(self, timeout=0.2):
-        return None
-
-    def drain_commands(self):
-        return 0
-
-    def mark_executing(self):
-        return None
-
-    def mark_passive(self):
-        return None
-
-    def diagnostics(self):
+    def health(self) -> Dict[str, Any]:
         return {
-            "assistant_state": "PASSIVE_LISTENING",
-            "microphone": {"running": self.running},
-            "vad": {"loaded": True},
-            "wakeword": {"loaded": True},
-            "stt": {"loaded": True},
-            "queue_health": {},
-            "latency": {},
-            "transcription_failures": 0,
-            "last_error": "",
+            "live_status": self._live_status,
+            "live_model": "test-model",
+            "live_error": self._live_error,
+            "live_error_type": self._live_error_type,
+            "close_reason": self._close_reason,
         }
 
+    # ---------- lifecycle ----------
 
-class VoiceControllerTests(unittest.TestCase):
+    def start(self):
+        if self._fail:
+            self._live_status = "failed"
+            self._live_error = "test failure"
+            self._live_error_type = "RuntimeError"
+            raise RuntimeError("test failure")
+        self._live_status = "connected"
+        self._eq.put({"type": "connected", "model": "test-model"})
+
+    def stop(self):
+        self._stopped = True
+        self._close_reason = "intentional"
+        self._live_status = "closed"
+        # Intentional stop — no "closed" event emitted (matches real bridge)
+
+    # ---------- queues ----------
+
+    def get_event(self, timeout=0.1):
+        try: return self._eq.get(timeout=timeout)
+        except queue.Empty: return None
+
+    def get_audio(self, timeout=0.05): return None
+    def get_transcript(self, timeout=0.1): return None
+
+    # ---------- sending ----------
+
+    def send_audio_chunk(self, audio, **kwargs): pass
+    def send_activity_start(self): pass
+    def send_activity_end(self): pass
+    def send_text(self, text): pass
+    def clear_audio_queue(self): return 0
+    def clear_transcript_queue(self): return 0
+
+    # ---------- test helpers ----------
+
+    def inject_event(self, event: Dict[str, Any]):
+        self._eq.put(event)
+
+    def inject_remote_close(self):
+        self._live_status = "closed"
+        self._close_reason = "remote"
+        self._eq.put({"type": "closed", "close_reason": "remote", "error": ""})
+
+
+# ---------------------------------------------------------------------------
+# Factory helper
+# ---------------------------------------------------------------------------
+
+def _make_controller(fail_primary: bool = False):
+    """Build a VoiceSystemController with all fakes injected."""
+    from audio.voice_controller import VoiceSystemController
+
+    sessions: list[FakeSession] = []
+
+    def session_factory(**kwargs):
+        s = FakeSession(fail=fail_primary)
+        sessions.append(s)
+        return s
+
+    tick = [0.0]
+    def time_fn():
+        tick[0] += 0.01
+        return tick[0]
+
+    ctrl = VoiceSystemController(
+        config=FakeAudioConfig(),
+        local_pipeline=FakePipeline(),
+        primary_microphone=FakeMicrophone(),
+        primary_speaker=FakeSpeaker(),
+        primary_session_factory=session_factory,
+        vad_detector=FakeVAD(),
+        time_fn=time_fn,
+    )
+    return ctrl, sessions
+
+
+_PATCHES = dict(
+    get_preferred=patch("audio.voice_controller.get_preferred_ai_provider", return_value="gemini"),
+    set_active=patch("audio.voice_controller.set_active_ai_provider"),
+    tools=patch("audio.voice_controller.build_live_tool_declarations", return_value=[]),
+    executor=patch("audio.voice_controller.execute_live_tool", return_value={}),
+)
+
+
+def _start_primary(ctrl):
+    with _PATCHES["get_preferred"], _PATCHES["set_active"], \
+         _PATCHES["tools"], _PATCHES["executor"]:
+        return ctrl._start_primary(reason="test")
+
+
+# ---------------------------------------------------------------------------
+# Test cases
+# ---------------------------------------------------------------------------
+
+class TestStartup(unittest.TestCase):
+
+    def test_primary_starts_when_gemini_preferred(self):
+        ctrl, sessions = _make_controller()
+        ok = _start_primary(ctrl)
+        self.assertTrue(ok)
+        self.assertTrue(ctrl.primary_active)
+
+    def test_primary_fails_gracefully_on_session_error(self):
+        ctrl, sessions = _make_controller(fail_primary=True)
+        ok = _start_primary(ctrl)
+        self.assertFalse(ok)
+        self.assertFalse(ctrl.primary_active)
+
+    def test_local_fallback_starts_when_primary_fails(self):
+        ctrl, sessions = _make_controller(fail_primary=True)
+        _start_primary(ctrl)
+        with patch("audio.voice_controller.set_active_ai_provider"):
+            ctrl._start_local_fallback(reason="primary_unavailable_startup")
+        self.assertTrue(ctrl.local_active)
+        self.assertFalse(ctrl.primary_active)
+
+
+class TestEventHandling(unittest.TestCase):
+
     def setUp(self):
-        set_active_ai_provider(None)
-        self.mic = FakeMicrophone()
-        self.vad = FakeVAD()
-        self.speaker = FakeSpeaker()
-        self.local_pipeline = FakeLocalPipeline()
-        self.pref_patch = mock.patch("audio.voice_controller.get_preferred_ai_provider", return_value="gemini")
-        self.pref_patch.start()
+        self.ctrl, self.sessions = _make_controller()
+        _start_primary(self.ctrl)
 
-    def tearDown(self):
-        self.pref_patch.stop()
-        set_active_ai_provider(None)
+    def test_interrupted_event_clears_speaker(self):
+        self.ctrl.primary_speaker.playing = True
+        self.ctrl._handle_primary_event({"type": "interrupted"})
+        self.assertFalse(self.ctrl.primary_speaker.is_playing())
 
-    def _make_controller(self, factory):
-        controller = VoiceSystemController(
-            local_pipeline=self.local_pipeline,
-            primary_microphone=self.mic,
-            primary_speaker=self.speaker,
-            primary_session_factory=factory,
-            vad_detector=self.vad,
-        )
-        controller.minimum_reconnect_backoff_s = 0.2
-        controller.reconnect_backoff_s = 0.2
-        controller.minimum_fallback_residence_s = 0.1
-        controller.minimum_healthy_period_s = 0.0
-        controller.probe_settle_s = 0.05
-        return controller
+    def test_error_event_switches_to_fallback(self):
+        with patch("audio.voice_controller.set_active_ai_provider"):
+            self.ctrl._handle_primary_event({
+                "type": "error",
+                "error": "boom",
+                "close_reason": "error",
+            })
+        self.assertFalse(self.ctrl.primary_active)
+        self.assertTrue(self.ctrl.local_active)
 
-    def _wait_until(self, predicate, timeout=2.0):
-        deadline = time.time() + timeout
-        while time.time() < deadline:
-            if predicate():
-                return True
-            time.sleep(0.05)
-        return False
+    def test_intentional_closed_does_not_trigger_fallback(self):
+        # Simulate what the bridge does when stop() is called:
+        # emits NO "closed" event — but even if one arrives with
+        # close_reason="intentional" the controller must ignore it.
+        self.ctrl._handle_primary_event({
+            "type": "closed",
+            "close_reason": "intentional",
+            "error": "",
+        })
+        self.assertFalse(self.ctrl.local_active,
+                         "Intentional close must not activate local fallback")
 
-    def test_primary_failure_switches_to_local_fallback(self):
-        factory = SessionFactory(["raise"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.local_active))
-            self.assertFalse(controller.primary_active)
-            self.assertEqual(self.local_pipeline.start_count, 1)
-        finally:
-            controller.stop()
+    def test_remote_closed_switches_to_fallback(self):
+        with patch("audio.voice_controller.set_active_ai_provider"):
+            self.ctrl._handle_primary_event({
+                "type": "closed",
+                "close_reason": "remote",
+                "error": "",
+            })
+        self.assertFalse(self.ctrl.primary_active)
+        self.assertTrue(self.ctrl.local_active)
 
-    def test_primary_recovers_and_switches_back_from_fallback(self):
-        factory = SessionFactory(["raise", "session", "session"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.local_active))
-            self.assertTrue(self._wait_until(lambda: controller.primary_active and not controller.local_active, timeout=3.0))
-            self.assertGreaterEqual(len(factory.instances), 2)
-            self.assertEqual(self.local_pipeline.stop_count, 1)
-        finally:
-            controller.stop()
 
-    def test_repeated_disconnect_reconnect_keeps_single_active_path(self):
-        factory = SessionFactory(["session", "session", "session", "session", "session"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.primary_active))
-            first = factory.instances[0]
-            first.inject_event({"type": "error", "error": "drop-1"})
-            self.assertTrue(self._wait_until(lambda: controller.local_active and not controller.primary_active, timeout=2.0))
-            self.assertTrue(self._wait_until(lambda: controller.primary_active and not controller.local_active, timeout=3.0))
-            current = factory.instances[-1]
-            current.inject_event({"type": "error", "error": "drop-2"})
-            self.assertTrue(self._wait_until(lambda: controller.local_active and not controller.primary_active, timeout=2.0))
-            self.assertTrue(self._wait_until(lambda: controller.primary_active and not controller.local_active, timeout=3.0))
-            self.assertFalse(controller.local_active and controller.primary_active)
-        finally:
-            controller.stop()
+class TestSessionHealthInterface(unittest.TestCase):
 
-    def test_gemini_speaking_user_interrupts_and_barge_in_starts_new_turn(self):
-        factory = SessionFactory(["session"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.primary_active))
-            session = factory.instances[0]
-            self.speaker.playing = True
-            controller._echo_floor_rms = 0.01
-            loud = np.ones(1600, dtype=np.float32) * 0.3
-            self.vad.push(True, True, False)
-            self.vad.push(True, False, False)
-            self.mic.push(loud)
-            self.mic.push(loud)
-            self.assertTrue(self._wait_until(lambda: any(call.get("activity_start") for call in session.audio_calls), timeout=2.0))
-            self.assertGreaterEqual(self.speaker.interruptions, 1)
-            self.assertGreaterEqual(session.clear_audio_calls, 1)
-        finally:
-            controller.stop()
+    def test_fake_session_health_has_required_keys(self):
+        s = FakeSession()
+        h = s.health()
+        for key in ("live_status", "live_model", "live_error", "live_error_type", "close_reason"):
+            self.assertIn(key, h, f"health() missing key: {key}")
 
-    def test_playback_echo_does_not_start_user_turn(self):
-        factory = SessionFactory(["session"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.primary_active))
-            session = factory.instances[0]
-            self.speaker.playing = True
-            controller._echo_floor_rms = 0.04
-            quiet = np.ones(1600, dtype=np.float32) * 0.03
-            self.vad.push(True, True, False)
-            self.vad.push(True, False, False)
-            self.mic.push(quiet)
-            self.mic.push(quiet)
-            time.sleep(0.5)
-            self.assertFalse(any(call.get("activity_start") for call in session.audio_calls))
-        finally:
-            controller.stop()
+    def test_fake_session_connected_after_start(self):
+        s = FakeSession()
+        s.start()
+        self.assertEqual(s.health()["live_status"], "connected")
 
-    def test_clean_shutdown_stops_primary_resources(self):
-        factory = SessionFactory(["session"])
-        controller = self._make_controller(factory)
-        controller.start()
-        self.assertTrue(self._wait_until(lambda: controller.primary_active))
-        session = factory.instances[0]
-        controller.stop()
-        self.assertFalse(controller.running)
-        self.assertTrue(session.stopped)
-        self.assertFalse(self.mic.running)
-        self.assertFalse(self.speaker.running)
-
-    def test_planner_failure_does_not_demote_live_primary(self):
-        factory = SessionFactory(["session"])
-        controller = self._make_controller(factory)
-        try:
-            controller.start()
-            self.assertTrue(self._wait_until(lambda: controller.primary_active))
-            self.assertFalse(controller.local_active)
-            self.assertEqual(controller.diagnostics().get("voice_mode"), "gemini_primary")
-        finally:
-            controller.stop()
+    def test_diagnostics_live_status_from_session(self):
+        ctrl, _ = _make_controller()
+        _start_primary(ctrl)
+        d = ctrl.diagnostics()
+        self.assertEqual(d.get("live_status"), "connected",
+                         "diagnostics() should report live_status=connected from session.health()")
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

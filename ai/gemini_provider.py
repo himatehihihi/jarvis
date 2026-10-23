@@ -187,6 +187,5 @@ def build_live_connect_config(
             activity_handling=types.ActivityHandling.START_OF_ACTIVITY_INTERRUPTS,
             turn_coverage=types.TurnCoverage.TURN_INCLUDES_ALL_INPUT,
         ),
-        explicit_vad_signal=True,
         tools=tools,
     )

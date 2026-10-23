@@ -157,13 +157,30 @@ class VoiceSystemController:
     def diagnostics(self) -> Dict[str, Any]:
         microphone = self.primary_microphone.health() if self.primary_active else {}
         fallback_diag = self.local_pipeline.diagnostics() if self.local_active else {}
+        session_health: Dict[str, Any] = {}
+        if self.primary_session is not None and hasattr(self.primary_session, "health"):
+            try:
+                session_health = self.primary_session.health()
+            except Exception:
+                pass
+        live_status = session_health.get("live_status") or (
+            "connected" if self.primary_active else "fallback"
+        )
+        live_error = session_health.get("live_error") or self.last_error
+        live_error_type = session_health.get("live_error_type", "")
+        live_model = session_health.get("live_model", "")
+        close_reason = session_health.get("close_reason", "")
         primary_diag = {
             "active": self.primary_active,
             "connected": self.primary_session is not None,
             "last_event": self.last_primary_event,
             "last_transcript": self.last_primary_transcript,
             "last_model_transcript": self.last_model_transcript,
-            "last_error": self.last_error,
+            "last_error": live_error,
+            "live_status": live_status,
+            "live_error_type": live_error_type,
+            "live_model": live_model,
+            "close_reason": close_reason,
             "speaker": self.primary_speaker.health(),
             "user_turn_active": self._user_turn_active,
             "turn_audio_bytes": self._turn_audio_bytes,
@@ -173,7 +190,11 @@ class VoiceSystemController:
         return {
             "voice_mode": "gemini_primary" if self.primary_active else "local_fallback",
             "preferred_provider": get_preferred_ai_provider(),
-            "live_status": "connected" if self.primary_active else "fallback",
+            "live_status": live_status,
+            "live_error": live_error,
+            "live_error_type": live_error_type,
+            "live_model": live_model,
+            "close_reason": close_reason,
             "listening_active": self.primary_active or self.local_active,
             "assistant_state": "GEMINI_LIVE" if self.primary_active else fallback_diag.get("assistant_state", "PASSIVE_LISTENING"),
             "microphone": microphone or fallback_diag.get("microphone", {}),
@@ -244,9 +265,23 @@ class VoiceSystemController:
         if event_type == "turn_complete":
             self._speaker_was_playing = self.primary_speaker.is_playing()
             return
-        if event_type in {"error", "closed"}:
-            self.last_error = str(event.get("error", "Gemini Live closed"))
-            self._switch_to_local("primary_session_closed")
+        if event_type == "error":
+            self.last_error = str(event.get("error", "Gemini Live error"))
+            close_reason = str(event.get("close_reason", "error"))
+            print(f"[VOICE CONTROLLER] primary_error close_reason={close_reason} error={self.last_error}")
+            self._switch_to_local("primary_session_error")
+            return
+        if event_type == "closed":
+            close_reason = str(event.get("close_reason", ""))
+            # Intentional stops are triggered by us — the session is already
+            # being torn down. Do NOT switch to fallback; just clear state.
+            if close_reason == "intentional":
+                print(f"[VOICE CONTROLLER] primary_closed_intentional — no fallback switch")
+                return
+            # Remote or unknown close: genuine failure, switch to fallback.
+            self.last_error = str(event.get("error", "Gemini Live remote close"))
+            print(f"[VOICE CONTROLLER] primary_closed_unexpected close_reason={close_reason}")
+            self._switch_to_local("primary_session_remote_close")
 
     def _should_probe_primary(self, now: float) -> bool:
         if self._probing_primary or self._starting_primary:

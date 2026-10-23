@@ -52,10 +52,47 @@ class GeminiLiveSessionBridge:
         self._session = None
         self._session_done = threading.Event()
         self._fatal_error = ""
+        self._error_type = ""
+        # idle | connecting | connected | failed | closing | closed
+        self._live_status = "idle"
+        self._close_reason = ""   # "intentional" | "remote" | "error" | ""
+
+    # ------------------------------------------------------------------ #
+    # Public properties                                                    #
+    # ------------------------------------------------------------------ #
 
     @property
     def fatal_error(self) -> str:
         return self._fatal_error
+
+    @property
+    def error_type(self) -> str:
+        return self._error_type
+
+    @property
+    def live_status(self) -> str:
+        return self._live_status
+
+    @property
+    def live_model(self) -> str:
+        return self.config.live_model
+
+    @property
+    def close_reason(self) -> str:
+        return self._close_reason
+
+    def health(self) -> Dict[str, Any]:
+        return {
+            "live_status": self._live_status,
+            "live_model": self.config.live_model,
+            "live_error": self._fatal_error,
+            "live_error_type": self._error_type,
+            "close_reason": self._close_reason,
+        }
+
+    # ------------------------------------------------------------------ #
+    # Lifecycle                                                            #
+    # ------------------------------------------------------------------ #
 
     def start(self) -> None:
         if self._thread and self._thread.is_alive():
@@ -63,17 +100,48 @@ class GeminiLiveSessionBridge:
         self._stop.clear()
         self._ready.clear()
         self._session_done.clear()
-        self._thread = threading.Thread(target=self._run_loop, daemon=True, name="jarvis-gemini-live")
+        self._fatal_error = ""
+        self._error_type = ""
+        self._close_reason = ""
+        self._live_status = "connecting"
+        print(f"[GEMINI LIVE] connect_attempt_starting model={self.config.live_model}")
+        self._thread = threading.Thread(
+            target=self._run_loop, daemon=True, name="jarvis-gemini-live"
+        )
         self._thread.start()
+
         if not self._ready.wait(timeout=15):
-            raise RuntimeError("Gemini Live session did not become ready in time")
+            self._live_status = "failed"
+            self._error_type = "TimeoutError"
+            self._fatal_error = (
+                f"Gemini Live session did not become ready within 15s "
+                f"(model={self.config.live_model})"
+            )
+            print(f"[GEMINI LIVE] connect_failed type={self._error_type} error={self._fatal_error}")
+            raise RuntimeError(self._fatal_error)
+
+        if self._live_status == "failed":
+            print(
+                f"[GEMINI LIVE] connect_failed type={self._error_type} "
+                f"error={self._fatal_error} model={self.config.live_model}"
+            )
+            raise RuntimeError(f"{self._error_type}: {self._fatal_error}")
+
+        print(f"[GEMINI LIVE] connect_succeeded model={self.config.live_model}")
 
     def stop(self) -> None:
+        """Intentional shutdown — does NOT emit an error/closed event to callers."""
+        self._close_reason = "intentional"
+        self._live_status = "closing"
         self._stop.set()
         if self._loop and self._session is not None:
             asyncio.run_coroutine_threadsafe(self._close_session(), self._loop)
         if self._thread and self._thread.is_alive():
             self._thread.join(timeout=5)
+
+    # ------------------------------------------------------------------ #
+    # Audio / text sending                                                 #
+    # ------------------------------------------------------------------ #
 
     def send_audio_chunk(
         self,
@@ -106,6 +174,10 @@ class GeminiLiveSessionBridge:
         if not text:
             return
         self._call_async(self._session.send_realtime_input(text=text))
+
+    # ------------------------------------------------------------------ #
+    # Queue readers                                                        #
+    # ------------------------------------------------------------------ #
 
     def get_audio(self, timeout: float = 0.1) -> Optional[bytes]:
         try:
@@ -145,36 +217,104 @@ class GeminiLiveSessionBridge:
                 break
         return cleared
 
+    # ------------------------------------------------------------------ #
+    # Internal async machinery                                             #
+    # ------------------------------------------------------------------ #
+
     def _run_loop(self) -> None:
         asyncio.run(self._main())
 
     async def _main(self) -> None:
         self._loop = asyncio.get_running_loop()
-        client = _client(self.config)
-        live_config = build_live_connect_config(self.system_instruction, config=self.config, tools=self.tools)
         try:
-            async with client.aio.live.connect(model=self.config.live_model, config=live_config) as session:
+            print(f"[GEMINI LIVE] building_client model={self.config.live_model}")
+            client = _client(self.config)
+            live_config = build_live_connect_config(
+                self.system_instruction, config=self.config, tools=self.tools
+            )
+            print(f"[GEMINI LIVE] connecting model={self.config.live_model}")
+            async with client.aio.live.connect(
+                model=self.config.live_model, config=live_config
+            ) as session:
                 self._session = session
+                self._live_status = "connected"
+                print(f"[GEMINI LIVE] connected model={self.config.live_model}")
                 self._ready.set()
                 self._push_event({"type": "connected", "model": self.config.live_model})
                 await self._receive_loop()
+                # _receive_loop returned because _stop was set — intentional.
         except Exception as exc:
+            self._live_status = "failed"
+            self._error_type = type(exc).__name__
             self._fatal_error = str(exc)
-            self._push_event({"type": "error", "error": self._fatal_error})
+            if not self._close_reason:
+                self._close_reason = "error"
+            print(
+                f"[GEMINI LIVE] connect_failed type={self._error_type} "
+                f"error={self._fatal_error} model={self.config.live_model}"
+            )
+            import traceback
+            traceback.print_exc()
+            self._push_event(
+                {
+                    "type": "error",
+                    "error": self._fatal_error,
+                    "error_type": self._error_type,
+                    "close_reason": self._close_reason,
+                }
+            )
             self._ready.set()
         finally:
+            if self._live_status == "connected":
+                self._live_status = "closed"
+                if not self._close_reason:
+                    self._close_reason = "remote"
+                print(
+                    f"[GEMINI LIVE] session_closed model={self.config.live_model} "
+                    f"reason={self._close_reason}"
+                )
             self._session = None
             self._session_done.set()
-            self._push_event({"type": "closed"})
+            # Only emit "closed" if this was NOT an intentional stop.
+            # Intentional stops are initiated by voice_controller calling .stop(),
+            # which sets _stop before this finally runs.  The controller already
+            # knows it is stopping — it does NOT need a "closed" event to trigger
+            # any fallback logic.
+            if self._close_reason != "intentional":
+                self._push_event(
+                    {
+                        "type": "closed",
+                        "close_reason": self._close_reason,
+                        "error": self._fatal_error,
+                    }
+                )
 
     async def _receive_loop(self) -> None:
+        """
+        Keep reading from the session until _stop is set.
+
+        The Gemini SDK's session.receive() is an async generator that yields
+        server messages.  On an idle session it may exhaust between turns.
+        We wrap it in an outer while loop so the bridge stays alive across
+        quiet periods rather than exiting as soon as one receive() batch ends.
+        """
         while not self._stop.is_set() and self._session is not None:
+            received_any = False
             async for response in self._session.receive():
                 if self._stop.is_set():
-                    break
+                    return
+                received_any = True
                 await self._handle_message(response)
-            if self._stop.is_set():
-                break
+            # If the inner async-for ended without _stop being set it means the
+            # server closed the stream (remote disconnect / idle timeout).
+            if not self._stop.is_set():
+                if not self._close_reason:
+                    self._close_reason = "remote"
+                print(
+                    f"[GEMINI LIVE] receive_loop_ended_unexpectedly "
+                    f"received_any={received_any} reason={self._close_reason}"
+                )
+                return  # fall through to finally in _main → emits "closed"
 
     async def _handle_message(self, response: Any) -> None:
         vad_signal = getattr(response, "voice_activity_detection_signal", None)
@@ -190,7 +330,9 @@ class GeminiLiveSessionBridge:
             self._push_event(
                 {
                     "type": "voice_activity",
-                    "voice_activity_type": str(getattr(voice_activity, "voice_activity_type", "") or ""),
+                    "voice_activity_type": str(
+                        getattr(voice_activity, "voice_activity_type", "") or ""
+                    ),
                     "audio_offset": getattr(voice_activity, "audio_offset", None),
                 }
             )
@@ -226,7 +368,9 @@ class GeminiLiveSessionBridge:
                 fn_id = str(getattr(fn, "id", "") or "")
                 args = getattr(fn, "args", None) or {}
                 result = self.tool_handler(name, dict(args))
-                responses.append(types.FunctionResponse(name=name, id=fn_id, response={"result": result}))
+                responses.append(
+                    types.FunctionResponse(name=name, id=fn_id, response={"result": result})
+                )
             await self._session.send_tool_response(function_responses=responses)
 
     async def _close_session(self) -> None:
